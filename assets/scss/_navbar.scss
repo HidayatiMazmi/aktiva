@@ -1,124 +1,178 @@
-.navbar-nav {
+/* Navbar */
 
-  .form-inline .input-group {
-    width: 100%;
-  }
-
-  .nav-item {
-    &.active {
-      .nav-link {
+.navbar {
+  &.default-layout {
+    font-family: $type-2;
+    background: $blue-teal-gradient;
+    transition: background $action-transition-duration $action-transition-timing-function;
+    -webkit-transition: background $action-transition-duration $action-transition-timing-function;
+    -moz-transition: background $action-transition-duration $action-transition-timing-function;
+    -ms-transition: background $action-transition-duration $action-transition-timing-function;
+    .navbar-brand-wrapper {
+      transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
+      -webkit-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
+      -moz-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
+      -ms-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
+      background: $sidebar-light-bg;
+      .sidebar-dark & {
+        background: $sidebar-dark-bg;
+      }
+      width: $sidebar-width-lg;
+      height: $navbar-height;
+      .navbar-brand {
         color: $white;
+        font-size: 1.5rem;
+        line-height: 48px;
+        margin-right: 0;
+        padding: 0.25rem 0;
+        @include display-flex;
+        &:active,
+        &:focus,
+        &:hover {
+          color: lighten(color(gray-dark), 10%);
+        }
+        img {
+          width: calc(#{$sidebar-width-lg} - 130px);
+          max-width: 100%;
+          height: 28px;
+          margin: auto;
+          vertical-align: middle;
+        }
+      }
+      .brand-logo-mini {
+        display: none;
+        img {
+          width: calc(#{$sidebar-width-icon} - 50px);
+          max-width: 100%;
+          height: 28px;
+          margin: auto;
+        }
       }
     }
-    &.dropdown {
-      .dropdown-toggle {
-        &::after {
-          width: 1rem;
-          text-align: center;
-          float: right;
-          vertical-align: 0;
-          border: 0;
-          font-weight: 900;
-          content: '\f105';
-          font-family: 'Font Awesome 5 Free';
+    .navbar-menu-wrapper {
+      transition: width $action-transition-duration $action-transition-timing-function;
+      -webkit-transition: width $action-transition-duration $action-transition-timing-function;
+      -moz-transition: width $action-transition-duration $action-transition-timing-function;
+      -ms-transition: width $action-transition-duration $action-transition-timing-function;
+      color: $white;
+      padding-left: 15px;
+      padding-right: 15px;
+      width: calc(100% - #{$sidebar-width-lg});
+      height: $navbar-height;
+      @media (max-width: 991px) {
+        width: auto;
+      }
+      .navbar-toggler {
+        border: 0;
+        color: inherit;
+        &:not(.navbar-toggler-right) {
+          @media (max-width: 991px) {
+            display: none;
+          }
         }
       }
-      &.show {
-        .dropdown-toggle::after {
-          content: '\f107';
+      .navbar-text {
+        font-size: $default-font-size;
+      }
+      .navbar-nav {
+        flex-direction: row;
+        align-items: center;
+        .nav-item {
+          margin-left: 1rem;
+          margin-right: 1rem;
+          .nav-link {
+            color: inherit;
+            font-size: $navbar-font-size;
+            vertical-align: middle;
+            @media (max-width: 767px) {
+              margin-left: 0.5rem;
+              margin-right: 0.5rem;
+            }
+            i {
+              font-size: $navbar-icon-font-size;
+              vertical-align: middle;
+            }
+            .profile-text {
+              margin-right: 15px;
+              .rtl & {
+                margin-right: 0;
+                margin-left: 15px;
+              }
+            }
+            &.nav-btn {
+              .btn {
+                background: rgba($white, .1);
+                padding: 0.75rem 1rem;
+                color: $white;
+              }
+              &:after {
+                display: none;
+              }
+            }
+          }
+          &.color-setting {
+            i {
+              font-size: 25px;
+              vertical-align: text-top;
+            }
+          }
+        }
+        &.navbar-nav-right {
+          @media (min-width: 992px) {
+            margin-left: auto;
+            .rtl & {
+              margin-left: 0;
+              margin-right: auto;
+            }
+          }
+        }
+        &.header-links {
+          height: $navbar-height;
+          padding-left: 2%;
+          .nav-item {
+            margin: 0;
+            .nav-link {
+              height: $navbar-height;
+              font-size: $navbar-font-size;
+              padding: 16px 25px;
+              @include display-flex;
+              @include align-items(center);
+              i {
+                margin-right: 10px;
+                font-size: 21px;
+                .rtl & {
+                  margin-right: 0;
+                  margin-left: 10px;
+                }
+              }
+            }
+            &.active {
+              background: rgba($white, 0.13);
+            }
+          }
         }
       }
-      &.no-arrow {
-        .dropdown-toggle::after {
+    }
+  }
+}
+
+@media (max-width:991px) {
+  .navbar {
+    &.default-layout {
+      flex-direction: row;
+      .navbar-brand-wrapper {
+        width: 75px;
+        .brand-logo {
           display: none;
         }
-      }
-    }
-    .nav-link {
-      &:focus {
-        // remove outline for Safari and Firefox
-        outline: none;
-      }
-      .badge {
-        position: absolute;
-        margin-left: 0.75rem;
-        top: 0.3rem;
-        font-weight: 400;
-        font-size: 0.5rem;
-      }
-    }
-  }
-
-  @media(min-width: 768px) {
-
-    .form-inline .input-group {
-      width: auto;
-    }
-
-  }
-
-}
-
-.sidebar {
-  width: $sidebar-collapsed-width !important;
-  background-color: $gray-900;
-  min-height: calc(100vh - #{$navbar-base-height});
-  @include sidebar-icons;
-  .nav-item {
-    .nav-link {
-      color: fade-out($white, 0.5);
-      &:active,
-      &:focus,
-      &:hover {
-        color: fade-out($white, 0.25);
-      }
-    }
-  }
-  &.toggled {
-    width: 0 !important;
-    overflow: hidden;
-  }
-}
-
-@media (min-width: 768px) {
-  .sidebar {
-    width: $sidebar-base-width !important;
-
-    .nav-item {
-      .nav-link {
-        display: block;
-        width: 100%;
-        text-align: left;
-        padding: 1rem;
-        width: $sidebar-base-width;
-        span {
-          font-size: 1rem;
-          display: inline;
+        .brand-logo-mini {
+          display: inline-block;
         }
       }
-      .dropdown-menu {
-        position: static !important;
-        margin: 0 1rem;
-        // Position fix for Firefox
-        top: 0;
-      }
-      &.dropdown .dropdown-toggle::after {
-        display: block;
-      }
-    }
-    &.toggled {
-      overflow: visible;
-      width: $sidebar-collapsed-width !important;
-      @include sidebar-icons;
     }
   }
-}
-
-// Fixed Nav Option
-// Add .fixed-top class to top .navbar-nav and to .sidebar - add .fixed-nav to body
-
-.sidebar.fixed-top {
-  top: $navbar-base-height;
-  height: calc(100vh - #{$navbar-base-height});
-  overflow-y: auto;
+  .navbar-collapse {
+    display: flex;
+    margin-top: 0.5rem;
+  }
 }
