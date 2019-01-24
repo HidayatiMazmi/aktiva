@@ -11,7 +11,7 @@ class User_model extends CI_Model {
 	
 	public function login($username,$password){
     	$this->db->select('*');
-    	$this->db->from('tbl_user');
+    	$this->db->from('user');
     	$this->db->where('username',$username);
 		$this->db->where('password',MD5($password));
 		$query =$this->db->get();
@@ -22,17 +22,6 @@ class User_model extends CI_Model {
         }
 	}
 
-	public function getTutorialHome(){
-		return $this->db->query("select `t`.`idTutorial` AS `idTutorial`,`t`.`nama_tutorial` AS `nama_tutorial`,`kt`.`kategori` AS `kategori`,`t`.`photo_hasil` AS `photo_hasil`,`u`.`username` AS `username` from ((`tutorial` `t` join `kategori_tutorial` `kt`) join `users` `u`) where ((`t`.`kat_id` = `kt`.`idKat`) and (`t`.`idUser` = `u`.`id`))")->num_rows();
-	}
-
-	public function getTutorialMember($username){
-		$this->db->select("`t`.`idTutorial` AS `idTutorial`,`t`.`nama_tutorial` AS `nama_tutorial`,`kt`.`kategori` AS `kategori`,`t`.`photo_hasil` AS `photo_hasil`,`u`.`username` AS `username`");
-        $this->db->where("((`t`.`kat_id` = `kt`.`idKat`) and (`t`.`idUser` = `u`.`id`)) and `u`.`username` = '$username'");
-        $this->db->from("((`tutorial` `t` join `kategori_tutorial` `kt`) join `users` `u`)"); 
-		$query = $this->db->get();
-		return $query;
-	}
 	public function insertUser()
 	{
 		$password = $this->input->post('password');
@@ -44,7 +33,7 @@ class User_model extends CI_Model {
 						'password' => $pass,
 						'role' => $role,
 						'photo' => $photo);
-		$insert = $this->db->insert('tbl_user',$object);
+		$insert = $this->db->insert('user',$object);
 		if (!$insert && $this->db->_error_number()==1062) {
 			echo "<script>alert('Username is already used'); </script>";
 		}
@@ -52,7 +41,7 @@ class User_model extends CI_Model {
 
 	public function register($username){
         $this->db->select('username');
-        $this->db->from('tbl_user');
+        $this->db->from('user');
         $this->db->where('username', $username);
         $query = $this->db->get();
         if($query->num_rows()==1){
@@ -62,10 +51,10 @@ class User_model extends CI_Model {
         }
     }
 	
-	public function selectAll($id_user){
+	public function selectAll($id){
         $this->db->select('*');
-        $this->db->from('tbl_user');
-        $this->db->where('id_user', $id_user);
+        $this->db->from('user');
+        $this->db->where('id', $id);
         $query = $this->db->get();
         if($query->num_rows()==1){
             return $query->result();
@@ -76,7 +65,7 @@ class User_model extends CI_Model {
 	
 	public function getDataUser()
 	{
-		$query = $this->db->get('tbl_user');
+		$query = $this->db->get('user');
 		return $query->result();
 		
 	}
@@ -84,8 +73,8 @@ class User_model extends CI_Model {
 	public function getUser($id)
 	{
 		$this->db->select('*');
-        $this->db->from('tbl_user');
-        $this->db->where('role', 'users');
+        $this->db->from('user');
+        $this->db->where('role', 'user');
         $query = $this->db->get();
         if($query->num_rows()>0){
             return $query->result();
@@ -99,7 +88,7 @@ class User_model extends CI_Model {
 		$object = array('username' => $this->input->post('username'),
 						'email' => $this->input->post('email'));
 		$this->db->where('id',$id);
-		$this->db->update('tbl_user', $object);
+		$this->db->update('user', $object);
 	}
 	
 	public function updatePass($id)
@@ -111,7 +100,7 @@ class User_model extends CI_Model {
                 'password' => $pass
             );
             $this->db->where('id', $id);
-            $this->db->update('tbl_user', $object);
+            $this->db->update('user', $object);
 
 	}
 	
@@ -121,7 +110,7 @@ class User_model extends CI_Model {
                 'photo' => $this->upload->data('file_name')
             );
             $this->db->where('id', $id);
-            $this->db->update('tbl_user', $object);
+            $this->db->update('user', $object);
 
 	}
 
@@ -143,7 +132,7 @@ class User_model extends CI_Model {
 	public function getTotal($search='')
     {
 		$this->db->select('*');
-		$this->db->from('tbl_user');
+		$this->db->from('user');
 		$this->db->join('tbl_spk','tbl_spk.id_user=tbl_user.id_user');
 		if($search !='null')
 		{

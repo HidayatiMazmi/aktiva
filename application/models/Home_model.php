@@ -8,18 +8,18 @@ class Home_model extends CI_Model {
 		parent::__construct();
 		//Do your magic here
 	}
-    public function _getAllSpk() {
+    public function _getAllAsetBergerak() {
         $this->db->select('*');
-        $this->db->from('tbl_spk');
-        $this->db->where('id_syarat',1);
+        $this->db->from('aset');
+        $this->db->where('id_jenis',1);
 		$query = $this->db->get('');
 		return $query->result_array();
 	}
 
-	public function _getAllSpkG() {
+	public function _getAllAsetNonBergerak() {
         $this->db->select('*');
-        $this->db->from('tbl_spk');
-        $this->db->where('id_syarat',2);
+        $this->db->from('aset');
+        $this->db->where('id_jenis',2);
 		$query = $this->db->get('');
 		return $query->result_array();
 	}

@@ -27,7 +27,7 @@
                 $session_array = array();
                 foreach ($result as $key) {
                     $session_array = array(
-                        'id_user'=>$key->id,
+                        'id'=>$key->id,
                         'username'=>$key->username,
                         'nama' => $key->nama,
                         'nip' => $key->nip,

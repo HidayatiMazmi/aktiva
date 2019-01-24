@@ -1,18 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class SPK extends CI_Controller {
+class Aset extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('SPK_model');
+		$this->load->model('Aset_model');
 	}
 	
 	public function index()
 	{
-		$data['Spk'] = $this->SPK_model->getDataSpk();
-        $this->load->view('home/spk/index',$data);
+		$data['Aset'] = $this->Aset_model->getDataAllAset();
+        $this->load->view('user/aset/index',$data);
 	}
 	
 	public function update()
@@ -36,11 +36,11 @@ class SPK extends CI_Controller {
 			redirect('SPK','refresh');
 		}
 	}
-	public function delete($id_surat)
+	public function delete($id)
 	{
-		$this->SPK_model->_deleteSPK($id_surat);
+		$this->Aset_model->_deleteAset($id);
 		echo "<script>alert('Successfully Deleted'); </script>";
-		redirect('SPK/','refresh');
+		redirect('Aset/','refresh');
 	}
 }
 

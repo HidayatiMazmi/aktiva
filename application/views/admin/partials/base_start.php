@@ -21,4 +21,6 @@
 </head>
 
 <body>
-    <?php $this->load->view('admin/layouts/header') ?>
+<div class="container-scroller">
+    <?php $this->load->view('admin/partials/_navbar') ?>
+    <?php $this->load->view('admin/partials/_sidebar') ?>
