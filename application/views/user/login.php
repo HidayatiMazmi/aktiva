@@ -1,4 +1,4 @@
-<?php $this->load->view('user/layouts/base_start_login') ?>
+<?php $this->load->view('user/partials/base_start_login') ?>
 <!-- iki login -->
 <?php echo form_open('Login/cekLogin'); ?>
               <?php if(!empty(validation_errors())){ ?>

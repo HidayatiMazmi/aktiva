@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Master extends CI_Controller {
 
 	public function __construct()
 	{
@@ -19,7 +19,7 @@ class Home extends CI_Controller {
                 redirect('Login');
             }else{
                 $data = [
-                    'title' => 'User',
+                    'title' => 'Master',
                     'username' => $session_data['username'],
                     'role' => $session_data['role'],
                     'id' => $session_data['id'],
@@ -30,7 +30,7 @@ class Home extends CI_Controller {
                 ];
                 $id = $data['id'];
                 $data['user'] = $this->User_model->selectAll($id);
-                $this->load->view('user/index', $data);
+                $this->load->view('user/master', $data);
             }
         } else {
             redirect('Login');

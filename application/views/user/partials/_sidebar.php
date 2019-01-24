@@ -5,7 +5,7 @@
             <div class="nav-link">
               <div class="user-wrapper">
                 <div class="profile-image">
-                  <img src="<?php echo base_url('assets/images/faces/face1.jpg') ?>" alt="profile image">
+                  <img src="<?php echo base_url();?>assets/images/faces/<?php echo $user[0]->photo?>" alt="profile image">
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name"><?php echo $username;?></p>

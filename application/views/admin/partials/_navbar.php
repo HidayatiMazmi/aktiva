@@ -1,21 +1,21 @@
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="<?php echo base_url('') ?>">
+        <a class="navbar-brand brand-logo" href="<?php echo base_url('home/admin') ?>">
           <img src="<?php echo base_url('assets/img/ico/logopgbesar.png');?>" alt="logo" />
         </a>
-        <a class="navbar-brand brand-logo-mini" href="<?php echo base_url('') ?>">
+        <a class="navbar-brand brand-logo-mini" href="<?php echo base_url('home/admin') ?>">
           <img src="<?php echo base_url('assets/img/ico/logopgbesar.png');?>" alt="logo" />
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
           <li class="nav-item">
-            <a href="<?php echo base_url('');?>" class="nav-link">Master
+            <a href="<?php echo base_url('home/admin');?>" class="nav-link">Master
               <!-- <span class="badge badge-primary ml-1">New</span> -->
             </a>
           </li>
           <li class="nav-item active">
-            <a href="<?php echo base_url('');?>" class="nav-link">
+            <a href="<?php echo base_url('home/admin');?>" class="nav-link">
               <i class="mdi mdi-elevation-rise"></i>Laporan</a>
           </li>
         </ul>
