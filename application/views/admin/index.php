@@ -1,20 +1,61 @@
-<?php $this->load->view('admin/partials/base_start') ?>
+<?php $this->load->view('admin/layouts/base_start') ?>
         <!-- iki index -->
+<!-- partial -->
+<div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item nav-profile">
+            <div class="nav-link">
+              <div class="user-wrapper">
+                <div class="profile-image">
+                  <img src="<?php echo base_url('assets/images/faces/face1.jpg') ?>" alt="profile image">
+                </div>
+                <div class="text-wrapper">
+                  <p class="profile-name">Richard V.Welsh</p>
+                  <div>
+                    <small class="designation text-muted">Manager</small>
+                    <span class="status-indicator online"></span>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-success btn-block">New Asset
+                <i class="mdi mdi-plus"></i>
+              </button>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url('home/admin') ?>">
+              <i class="menu-icon mdi mdi-television"></i>
+              <span class="menu-title">Beranda</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url('home/user') ?>">
+              <i class="menu-icon mdi mdi-table"></i>
+              <span class="menu-title">User</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url('home/aset') ?>">
+              <i class="menu-icon mdi mdi-table"></i>
+              <span class="menu-title">Aset</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row purchace-popup">
             <div class="col-12">
               <span class="d-block d-md-flex align-items-center">
-                <p>Like what you see? Check out our premium version for more.</p>
-                <a class="btn ml-auto download-button d-none d-md-block" href="https://github.com/BootstrapDash/StarAdmin-Free-Bootstrap-Admin-Template" target="_blank">Download Free Version</a>
-                <a class="btn purchase-button mt-4 mt-md-0" href="https://www.bootstrapdash.com/product/star-admin-pro/" target="_blank">Upgrade To Pro</a>
-                <i class="mdi mdi-close popup-dismiss d-none d-md-block"></i>
+                <p>Welkam Mimin</p>
               </span>
             </div>
           </div>
           <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
@@ -22,39 +63,19 @@
                       <i class="mdi mdi-cube text-danger icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Total Revenue</p>
+                      <p class="mb-0 text-right">Data Master</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">$65,650</h3>
+                        <h3 class="font-weight-medium text-right mb-0"></h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> 65% lower growth
+                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i>
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-              <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-receipt text-warning icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Orders</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">3455</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> Product-wise sales
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
@@ -62,19 +83,19 @@
                       <i class="mdi mdi-poll-box text-success icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Sales</p>
+                      <p class="mb-0 text-right">Asset</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">5693</h3>
+                        <h3 class="font-weight-medium text-right mb-0"></h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i> Weekly Sales
+                    <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i>
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 grid-margin stretch-card">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
@@ -82,21 +103,21 @@
                       <i class="mdi mdi-account-location text-info icon-lg"></i>
                     </div>
                     <div class="float-right">
-                      <p class="mb-0 text-right">Employees</p>
+                      <p class="mb-0 text-right">User</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0">246</h3>
+                        <h3 class="font-weight-medium text-right mb-0"></h3>
                       </div>
                     </div>
                   </div>
                   <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> Product-wise sales
+                    <i class="mdi mdi-reload mr-1" aria-hidden="true"></i>
                   </p>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col-lg-7 grid-margin stretch-card">
+            <div class="col-8 grid-margin stretch-card">
               <!--weather card-->
               <div class="card card-weather">
                 <div class="card-body">
@@ -185,55 +206,9 @@
                   </div>
                 </div>
               </div>
-              <!--weather card ends-->
-            </div>
-            <div class="col-lg-5 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h2 class="card-title text-primary mb-5">Performance History</h2>
-                  <div class="wrapper d-flex justify-content-between">
-                    <div class="side-left">
-                      <p class="mb-2">The best performance</p>
-                      <p class="display-3 mb-4 font-weight-light">+45.2%</p>
-                    </div>
-                    <div class="side-right">
-                      <small class="text-muted">2017</small>
-                    </div>
-                  </div>
-                  <div class="wrapper d-flex justify-content-between">
-                    <div class="side-left">
-                      <p class="mb-2">Worst performance</p>
-                      <p class="display-3 mb-5 font-weight-light">-35.3%</p>
-                    </div>
-                    <div class="side-right">
-                      <small class="text-muted">2015</small>
-                    </div>
-                  </div>
-                  <div class="wrapper">
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Sales</p>
-                      <p class="mb-2 text-primary">88%</p>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 88%" aria-valuenow="88"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <div class="wrapper mt-4">
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Visits</p>
-                      <p class="mb-2 text-success">56%</p>
-                    </div>
-                    <div class="progress">
-                      <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 56%" aria-valuenow="56"
-                        aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+           
             </div>
           </div>
         </div>
         <!-- content-wrapper ends -->
-
-        <?php $this->load->view('admin/partials/base_end') ?>
+        <?php $this->load->view('admin/layouts/base_end') ?>
