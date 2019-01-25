@@ -155,9 +155,6 @@
               <a class="dropdown-item">
                 Change Password
               </a>
-              <a class="dropdown-item">
-                Check Inbox
-              </a>
               <a href="<?php echo base_url('Login/logout');?>" class="dropdown-item">
                 Sign Out
               </a>

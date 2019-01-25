@@ -1,5 +1,7 @@
+<!-- partial -->
 <div class="container-fluid page-body-wrapper">
-<nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
@@ -15,7 +17,7 @@
                   </div>
                 </div>
               </div>
-              <button class="btn btn-success btn-block">New Project
+              <button class="btn btn-success btn-block">New Asset
                 <i class="mdi mdi-plus"></i>
               </button>
             </div>
@@ -23,75 +25,44 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('home/admin') ?>">
               <i class="menu-icon mdi mdi-television"></i>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title">Beranda</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-content-copy"></i>
-              <span class="menu-title">Basic UI Elements</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('assets/pages/ui-features/buttons.html') ?>">Buttons</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('assets/pages/ui-features/typography.html') ?>">Typography</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('assets/pages/forms/basic_elements.html') ?>">
-              <i class="menu-icon mdi mdi-backup-restore"></i>
-              <span class="menu-title">Form elements</span>
+            <a class="nav-link" href="<?php echo base_url('home/user') ?>">
+              <i class="menu-icon mdi mdi-account-box"></i>
+              <span class="menu-title">User</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('assets/pages/charts/chartjs.html') ?>">
-              <i class="menu-icon mdi mdi-chart-line"></i>
-              <span class="menu-title">Charts</span>
+            <a class="nav-link" href="<?php echo base_url('home/aset') ?>">
+              <i class="menu-icon mdi mdi-briefcase"></i>
+              <span class="menu-title">Asset</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('assets/pages/tables/basic-table.html') ?>">
-              <i class="menu-icon mdi mdi-table"></i>
-              <span class="menu-title">Tables</span>
+            <a class="nav-link" href="<?php echo base_url('home/aset') ?>">
+              <i class="menu-icon mdi mdi-view-list"></i>
+              <span class="menu-title">Jenis Asset</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('assets/pages/icons/font-awesome.html') ?>">
-              <i class="menu-icon mdi mdi-sticker"></i>
-              <span class="menu-title">Icons</span>
+            <a class="nav-link" href="<?php echo base_url('home/aset') ?>">
+              <i class="menu-icon mdi mdi-layers"></i>
+              <span class="menu-title">Kategori</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-              <i class="menu-icon mdi mdi-restart"></i>
-              <span class="menu-title">User Pages</span>
-              <i class="menu-arrow"></i>
+            <a class="nav-link" href="<?php echo base_url('home/aset') ?>">
+              <i class="menu-icon mdi mdi-map-marker-radius"></i>
+              <span class="menu-title">Lokasi</span>
             </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('assets/pages/samples/blank-page.html') ?>"> Blank Page </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('assets/pages/samples/login.html') ?>"> Login </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('assets/pages/samples/register.html') ?>"> Register </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('assets/pages/samples/error-404.html') ?>"> 404 </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="<?php echo base_url('assets/pages/samples/error-500.html') ?>"> 500 </a>
-                </li>
-              </ul>
-            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url('home/aset') ?>">
+              <i class="menu-icon mdi mdi-package-variant"></i>
+              <span class="menu-title">Pemeliharaan</span>
+            </a>
           </li>
         </ul>
       </nav>
