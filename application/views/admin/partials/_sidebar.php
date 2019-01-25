@@ -23,43 +23,43 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('home/admin') ?>">
+            <a class="nav-link" href="<?php echo base_url('views/admin') ?>">
               <i class="menu-icon mdi mdi-television"></i>
               <span class="menu-title">Beranda</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('home/user') ?>">
+            <a class="nav-link" href="<?php echo base_url('home/User') ?>">
               <i class="menu-icon mdi mdi-account-box"></i>
               <span class="menu-title">User</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('home/aset') ?>">
+            <a class="nav-link" href="<?php echo base_url('home/Asset') ?>">
               <i class="menu-icon mdi mdi-briefcase"></i>
               <span class="menu-title">Asset</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('home/aset') ?>">
+            <a class="nav-link" href="<?php echo base_url('home/Jenis_asset') ?>">
               <i class="menu-icon mdi mdi-view-list"></i>
               <span class="menu-title">Jenis Asset</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('home/aset') ?>">
+            <a class="nav-link" href="<?php echo base_url('home/Kategori') ?>">
               <i class="menu-icon mdi mdi-layers"></i>
               <span class="menu-title">Kategori</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('home/aset') ?>">
+            <a class="nav-link" href="<?php echo base_url('home/Lokasi') ?>">
               <i class="menu-icon mdi mdi-map-marker-radius"></i>
               <span class="menu-title">Lokasi</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('home/aset') ?>">
+            <a class="nav-link" href="<?php echo base_url('home/Pemeliharaan') ?>">
               <i class="menu-icon mdi mdi-package-variant"></i>
               <span class="menu-title">Pemeliharaan</span>
             </a>
