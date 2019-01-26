@@ -44,7 +44,6 @@ class Home extends CI_Controller {
                 redirect('Login');
             }else{
                 $data = [
-                    // 'results' => $this->m_home->getAll($config),
                     'title' => 'Admin',
                     'username' => $session_data['username'],
                     'role' => $session_data['role'],

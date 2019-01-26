@@ -9,7 +9,7 @@ class User_admin_model extends CI_Model {
     }
     public function select_id($id)
     {
-        return $this->db->where('id_user',$id)->get('user')->result()[0];
+        return $this->db->where('id',$id)->get('user')->result()[0];
     }
     public function insert()
     {
@@ -21,12 +21,12 @@ class User_admin_model extends CI_Model {
     {
         $set = $this->input->post();
         $set['password'] = md5($set['password']);
-        $this->db->where('id_user',$id);
+        $this->db->where('id',$id);
         $this->db->update('user',$set);
     }
     public function delete($id)
     {
-        $this->db->where('id_user',$id);
+        $this->db->where('id',$id);
         $this->db->delete('user');
     }
     public function search($search)
@@ -37,5 +37,4 @@ class User_admin_model extends CI_Model {
         return $query->result();    
     }
 }
-
 /* End of file ModelName.php */

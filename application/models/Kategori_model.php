@@ -35,5 +35,4 @@ class Kategori_model extends CI_Model {
         return $query->result();    
     }
 }
-
 /* End of file ModelName.php */
