@@ -9,31 +9,43 @@ class Master extends CI_Controller {
         $this->load->model('Home_model');
         $this->load->model('Aset_model');
         $this->load->model('User_model');
+        if($this->session->has_userdata('logged_in')) {
+            $session_data = $this->session->userdata('logged_in');
+
+            if($session_data['role'] != 'User') {
+                redirect('Home/Admin');
+            }
+        } else {
+            redirect('Login');
+        }
 	}
 	
 	public function index()
 	{
-        if($this->session->has_userdata('logged_in')) {
-            $session_data = $this->session->userdata('logged_in');
-            if($session_data['role'] != 'User') {
-                redirect('Login');
-            }else{
-                $data = [
-                    'title' => 'Master',
-                    'username' => $session_data['username'],
-                    'role' => $session_data['role'],
-                    'id' => $session_data['id'],
-
-                    'countAsetBergerak' => $this->Home_model->_getAllAsetBergerak(),
-                    'countAsetNonBergerak' => $this->Home_model->_getAllAsetNonBergerak(),
-                    'countAllAset' => $this->Aset_model->getDataAllAset(),
-                ];
-                $id = $data['id'];
-                $data['user'] = $this->User_model->selectAll($id);
-                $this->load->view('user/master', $data);
-            }
-        } else {
-            redirect('Login');
+        $total=$this->Aset_model->getAsetFilter();
+        $config['base_url'] = base_url() . "master/index";
+        $config['total_rows'] = $total;
+        $config['per_page'] = 3;
+        $config['num_links'] = 2;
+        $config['uri_segment'] = 3;
+        $config['first_link'] = 'First';
+        $config['last_link'] = 'Last';
+        $config['next_link'] = 'Next';
+        $config['prev_link'] = 'Prev';
+        
+        $this->pagination->initialize($config);
+        if($this->session->userdata('logged_in')){
+            $session_data=$this->session->userdata('logged_in');
+            $data = [
+                'results' => $this->Aset_model->getAll($config),
+                'title' => 'Master',
+                'username' => $session_data['username'],
+                'role' => $session_data['role'],
+                'id' => $session_data['id'],
+            ];
+            $id = $data['id'];
+            $data['user'] = $this->User_model->selectAll($id);
+            $this->load->view('user/master', $data);
         }
     }
 

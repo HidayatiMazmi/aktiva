@@ -13,7 +13,6 @@ class Jenis_asset extends CI_Controller {
     }
 	public function index()
 	{
-
 		$data['jenis_asset'] = $this->Jenis_asset_model->select();
 		$this->load->view('admin/jenis_asset/index',$data);
 	}
