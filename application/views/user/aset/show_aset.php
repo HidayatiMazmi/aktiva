@@ -51,6 +51,14 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col-md-5">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Kondisi Terima</label>
+                          <div class="col-sm-9">
+                          <?php echo $aset->masa_pemakaian; ?>
+                          </div>
+                        </div>
+                      </div>
                       <div class="col-md-2">
                       <button type="button" class="btn btn-primary btn-sm">Download</button>
                       </div>
