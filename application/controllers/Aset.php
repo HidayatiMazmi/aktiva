@@ -7,6 +7,7 @@ class Aset extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Aset_model');
+		$this->load->model('User_model');
 	}
 
 	public function cek() {
@@ -79,16 +80,57 @@ class Aset extends CI_Controller {
 	}
 	public function search()
     {
-        if($this->input->post('search') != null){
-            $this->load->model('Jenis_asset_model');
-            $search = $this->Jenis_asset_model->search($this->input->post('search'));
-            $data = [
-                'jenis_asset' => $search,
-            ];
-            $this->load->view('admin/jenis_asset/index', $data);
-        }else{
+		$s = [
+			'jenis_asset' => $this->input->post('jenis_asset'),
+			'kategori' => $this->input->post('kategori'),
+			'lokasi' => $this->input->post('lokasi'),
+			'kunci' => $this->input->post('kunci'),
+		];
+		print_r($s);
+        if($s != null){
+			$search = $this->Aset_model->get_quick_list($s);
+			$config['base_url'] = base_url() . "master/index";
+			$config['total_rows'] = $search;
+			$config['per_page'] = 3;
+			$config['num_links'] = 2;
+			$config['uri_segment'] = 3;
+			$config['first_link'] = 'First';
+			$config['last_link'] = 'Last';
+			$config['next_link'] = 'Next';
+			$config['prev_link'] = 'Prev';
+			$this->pagination->initialize($config);
+			if($this->session->userdata('logged_in')){
+				$session_data=$this->session->userdata('logged_in');
+				$data = [
+					'results' => $search,
+					'title' => 'Master',
+					'username' => $session_data['username'],
+					'role' => $session_data['role'],
+					'id' => $session_data['id'],
+				];
+				$data["kategori"] = $this->Aset_model->getKatAset();
+				$data["lokasi"] = $this->Aset_model->getLokAset();
+				$data["jenis_asset"] = $this->Aset_model->getJenisAset();
+				$id = $data['id'];
+				$data['user'] = $this->User_model->selectAll($id);
+				//$this->load->view('user/master', $data);
+			}
+		}
+		else{
             echo"data tidak ditemukan";
         }
-    }
+	}
+	public function show($id_aset)
+	{
+      	$session_data=$this->session->userdata('logged_in');
+		$data['username']=$session_data['username'];
+        $data['role']=$session_data['role'];
+        $data['id']=$session_data['id'];
+		$data['aset'] = $this->Aset_model->show($id_aset);
+		$data['pemeliharaan'] = $this->Aset_model->getAset($id_aset);
+		$id = $data['id'];
+		$data['user'] = $this->User_model->selectAll($id);
+		$this->load->view('user/aset/show_aset', $data);
+	}
 }
 

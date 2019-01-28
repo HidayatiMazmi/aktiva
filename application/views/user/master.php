@@ -8,7 +8,7 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Pencarian Aset</h4>
-                  <?php echo form_open('search'); ?>
+                  <?php echo form_open('aset/search'); ?>
                   <form class="form-sample">
                     <div class="row">
                       <div class="col-md-5">
@@ -16,10 +16,10 @@
                           <label class="col-sm-3 col-form-label">Jenis Aset</label>
                           <div class="col-sm-9">
                             <select name="id_jenis" class="form-control"placeholder="Pilih Jenis">
-                              <option id="elektronik" value="1">Perangkat Elektronik</option>
-                              <option id="tanah" value="2">Tanah</option>
-                              <option id="kendaraan" value="3">Kendaraan</option>
-                              <option id="bangunan" value="4">Bangunan</option>
+                            <option value="" selected="selected">Cari dengan jenis</option>
+                              <?php foreach($jenis_asset as $j) { ?>
+                              <option value="<?php echo $j['id']; ?>"><?php echo $j['nama_jenis']; ?></option>
+                              <?php } ?>
                             </select>
                           </div>
                         </div>
@@ -29,10 +29,10 @@
                           <label class="col-sm-3 col-form-label">Kategori Aset</label>
                           <div class="col-sm-9">
                             <select name="id_kategori" class="form-control" placeholder="Pilih Kategori">
-                              <option id="elektronik" value="1">Perangkat Elektronik</option>
-                              <option id="tanah" value="2">Tanah</option>
-                              <option id="kendaraan" value="3">Kendaraan</option>
-                              <option id="bangunan" value="4">Bangunan</option>
+                              <option value="" selected="selected">Cari dengan Kategori</option>
+                              <?php foreach($kategori as $k) { ?>
+                                <option value="<?php echo $k['id']; ?>"><?php echo $k['nama_kategori']; ?></option>
+                              <?php } ?>
                             </select>
                           </div>
                         </div>
@@ -42,10 +42,10 @@
                           <label class="col-sm-3 col-form-label">Lokasi Aset</label>
                           <div class="col-sm-9">
                             <select name="id_lokasi" class="form-control" value="Pilih Lokasi">
-                              <option id="elektronik" value="1">Perangkat Elektronik</option>
-                              <option id="tanah" value="2">Tanah</option>
-                              <option id="kendaraan" value="3">Kendaraan</option>
-                              <option id="bangunan" value="4">Bangunan</option>
+                              <option value="" selected="selected">Cari dengan Lokasi</option>
+                              <?php foreach($lokasi as $l) { ?>
+                                <option value="<?php echo $l['id']; ?>"><?php echo $l['nama_lokasi']; ?></option>
+                              <?php } ?>
                             </select>
                           </div>
                         </div>
@@ -59,11 +59,10 @@
                         </div>
                       </div>
                       <div class="col-md-2">
-                      <button type="button" class="btn btn-primary btn-sm"><i class="mdi mdi-magnify"></i>Cari</button>
+                      <button type="submit" class="btn btn-primary btn-sm"><i class="mdi mdi-magnify"></i>Cari</button>
                       </div>
                     </div>
                   </form>
-                  <?php echo form_close(); ?>
                 </div>
               </div>
             </div>
@@ -100,14 +99,17 @@
                           <td>
                             <ul class="navbar-nav navbar-nav-right">
                               <li class="nav-item dropdown d-none d-xl-inline-block">
-                                <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" id="UserDropdown" data-toggle="dropdown" aria-expanded="false">
                                   <i class="mdi mdi-settings"></i>Action
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                                  <a class="dropdown-item mt-2" href="<?php echo base_url(); ?>tutorial/edit/<?php echo $item['idTutorial']; ?>">
+                                  <a class="dropdown-item mt-2" href="<?php echo site_url("aset/show/".$row->id); ?>">
+                                  <i class="mdi mdi-monitor"></i>
+                                  </a>
+                                  <a class="dropdown-item mt-2" href="<?php echo site_url("aset/update/".$row->id); ?>">
                                   <i class="mdi mdi-pencil-box-outline"></i>
                                   </a>
-                                  <a class="dropdown-item">
+                                  <a class="dropdown-item" href="<?php echo site_url("aset/delete/".$row->id); ?>">
                                   <i class="mdi mdi-delete"></i>
                                   </a>
                                 </div>
@@ -119,6 +121,7 @@
                         <?php } else { ?>
                         <td colspan="12" type="center">Tidak ada data</td>
                       <?php } ?>
+                      <?php echo form_close(); ?>
                       </tbody>                      
                     </table>
                   </div>

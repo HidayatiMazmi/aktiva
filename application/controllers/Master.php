@@ -43,6 +43,9 @@ class Master extends CI_Controller {
                 'role' => $session_data['role'],
                 'id' => $session_data['id'],
             ];
+            $data["kategori"] = $this->Aset_model->getKatAset();
+            $data["lokasi"] = $this->Aset_model->getLokAset();
+            $data["jenis_asset"] = $this->Aset_model->getJenisAset();
             $id = $data['id'];
             $data['user'] = $this->User_model->selectAll($id);
             $this->load->view('user/master', $data);
