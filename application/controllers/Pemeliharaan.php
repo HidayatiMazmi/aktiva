@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Pemeliharaan extends CI_Controller {
+
 	public function __construct()
     {
         parent::__construct();
@@ -12,48 +14,51 @@ class Pemeliharaan extends CI_Controller {
 	public function index()
 	{
 
-		$data['pemeliharaan'] = $this->Pemeliharaan_model->select();
-		$this->load->view('admin/pemeliharaan/index',$data);
+		$data['Pemeliharaan'] = $this->Pemeliharaan_model->select();
+		$this->load->view('admin/Pemeliharaan/index',$data);
 	}
+
     public function search()
     {
         if($this->input->post('search') != null){
             $this->load->model('Pemeliharaan_model');
             $search = $this->Pemeliharaan_model->search($this->input->post('search'));
             $data = [
-                'pemeliharaan' => $search,
+                'Pemeliharaan' => $search,
             ];
-            $this->load->view('admin/pemeliharaan/index', $data);
+            $this->load->view('admin/Pemeliharaan/index', $data);
         }else{
             echo"data tidak ditemukan";
         }
     }
+
 	public function create()
 	{
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nama_pemeliharaan','Nama',"required");
+		$this->form_validation->set_rules('Hasil_pemeliharaan','hasil',"required");
 		if ($this->form_validation->run() == false) {
-			$this->load->view('admin/pemeliharaan/create');
+			$this->load->view('admin/Pemeliharaan/create');
 		}else{
 			$this->Pemeliharaan_model->insert();
-			redirect('pemeliharaan');
+			redirect('Pemeliharaan');
 		}
 	}
 	public function edit($id)
 	{
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('nama_pemeliharaan','Nama',"required");
+		$this->form_validation->set_rules('Hasil_pemeliharaan','Nama',"required");
 		if ($this->form_validation->run() == false) {
-			$data['pemeliharaan'] = $this->Pemeliharaan_model->select_id($id);
+			$data['Pemeliharaan'] = $this->Pemeliharaan_model->select_id($id);
 			$this->load->view('admin/pemeliharaan/edit',$data);
 		}else{
 			$this->Pemeliharaan_model->update($id);
-			redirect('pemeliharaan');
+			redirect('Pemeliharaan');
 		}
 	}
+
 	public function destroy($id)
 	{
 		$this->Pemeliharaan_model->delete($id);
-		redirect('pemeliharaan');
+		redirect('Pemeliharaan');
 	}
 }

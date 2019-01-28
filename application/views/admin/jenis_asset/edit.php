@@ -15,12 +15,8 @@
                 <?php echo form_open_multipart(''); ?>
                   <?php echo validation_errors(); ?>
                     <div class="form-group">
-                      <label for="id">ID</label>
-                      <input type="text" class="form-control" id="id" name="id" placeholder="Masukkan ID">
-                    </div>
-                    <div class="form-group">
                       <label for="nama">Jenis Asset</label>
-                      <input type="text" class="form-control" id="nama_jenis" name="nama_jenis" placeholder="Masukkan Nama">
+                      <input type="text" class="form-control" id="nama_jenis" name="nama_jenis" value="<?php echo $jenis_asset->nama_jenis ?>" placeholder="Masukkan Jenis Asset">
                     </div>                  
                       <a class="btn btn-info" href="<?php echo site_url('kategori/') ?>">Kembali</a>
                       <button type="submit" class="btn btn-primary">OK</button>

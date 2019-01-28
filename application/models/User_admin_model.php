@@ -11,6 +11,12 @@ class User_admin_model extends CI_Model {
     {
         return $this->db->where('id',$id)->get('user')->result()[0];
     }
+    public function insert_user($data = [])
+    {
+        $result = $this->db->insert('user', $data);
+        return $result;
+    }
+
     public function insert()
     {
         $set = $this->input->post();

@@ -15,24 +15,20 @@
                 <?php echo form_open_multipart(''); ?>
                   <?php echo validation_errors(); ?>
                     <div class="form-group">
-                      <label for="id">ID</label>
-                      <input type="text" class="form-control" id="id" name="id" placeholder="Masukkan ID">
-                    </div>
-                    <div class="form-group">
                       <label for="nama">Nama</label>
-                      <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama">
+                      <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $aset->nama ?>" placeholder="Masukkan Nama">
                     </div>
                     <div class="form-group">
                       <label for="nip">NIP</label>
-                      <input type="text" class="form-control" id="nip" name="nip" placeholder="Masukkan NIP">
+                      <input type="text" class="form-control" id="nip" name="nip" value="<?php echo $aset->nip ?>" placeholder="Masukkan NIP">
                     </div>
                     <div class="form-group">
                       <label for="username">username</label>
-                      <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username">
+                      <input type="text" class="form-control" id="username" name="username" value="<?php echo $aset->username ?>" placeholder="Masukkan username">
                     </div>
                     <div class="form-group">
                       <label for="password">password</label>
-                      <input type="text" class="form-control" id="password" name="password" placeholder="Masukkan password">
+                      <input type="text" class="form-control" id="password" name="password" value="<?php echo $aset->password ?>" placeholder="Masukkan password">
                     </div>
                     <div class="form-group">
                       <label for="role">role</label>
@@ -54,7 +50,7 @@
                       </div>
                     </div>
                     
-                      <a class="btn btn-info" href="<?php echo site_url('user_admin/') ?>">Kembali</a>
+                      <a class="btn btn-info" href="<?php echo site_url('Asset/') ?>">Kembali</a>
                       <button type="submit" class="btn btn-primary">OK</button>
                       <?php echo form_close() ?>
                     </div>

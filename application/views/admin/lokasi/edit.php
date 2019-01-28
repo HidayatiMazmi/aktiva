@@ -15,12 +15,8 @@
                 <?php echo form_open_multipart(''); ?>
                   <?php echo validation_errors(); ?>
                     <div class="form-group">
-                      <label for="id">ID</label>
-                      <input type="text" class="form-control" id="id" name="id" placeholder="Masukkan ID">
-                    </div>
-                    <div class="form-group">
                       <label for="nama">Lokasi</label>
-                      <input type="text" class="form-control" id="nama_lokasi" name="nama_lokasi" placeholder="Masukkan Lokasi">
+                      <input type="text" class="form-control" id="nama_lokasi" name="nama_lokasi" value="<?php echo $lokasi->nama_lokasi ?>" placeholder="Masukkan Lokasi">
                     </div>                  
                       <a class="btn btn-info" href="<?php echo site_url('lokasi/') ?>">Kembali</a>
                       <button type="submit" class="btn btn-primary">OK</button>

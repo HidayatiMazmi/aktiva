@@ -1,90 +1,47 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Tas_model extends CI_Model {
+class Asset_model extends CI_Model {
 
-    public function list($limit, $start, $search)
-    { 
-        $query = $this->db->get('barang', $limit, $start);
-        if($search != 'NIL')
-        {
-            $this->db->like('nama',$search);
-        }
-        $query = $this->db->get('barang', $limit, $start);
-        return ($query->num_rows() > 0) ? $query->result() : false;
+    public function select()
+    {
+        return $this->db->get('aset')->result();
+    }
+    public function select_id($id)
+    {
+        return $this->db->where('id',$id)->get('aset')->result()[0];
     }
 
-    public function list1($limit,$start,$word)
+    public function create($error='')
     {
-        $this->db->select('barang.*,kategori.nama_kategori');
-        $this->db->join('kategori','barang.kategori=kategori.id');
-        $this->db->like('barang.nama',$word);
-        $this->db->or_like('kategori.nama_kategori',$word);
-      $query = $this->db->get('barang', $limit, $start);
-      return ($query->num_rows() > 0) ? $query->result() : false;   
+        $data = [
+            'error' => $error,
+            'aset' => $this->db->get('aset')->result()
+        ];
+        $this->load->view('admin/asset/create', $data);
     }
-
-    public function search($word)
+    public function insert()
     {
-        $this->db->select('barang.*,kategori.nama_kategori');
-        $this->db->join('kategori','barang.kategori=kategori.id');
-        $this->db->like('barang.nama',$word);
-        $this->db->or_like('kategori.nama_kategori',$word);
-        return $this->db->get('barang')->result();
+        $set = $this->input->post();
+        $this->db->insert('aset',$set);
     }
-
-    public function product($id)
+    public function update($id)
     {
-        $this->db->select('barang.*,kategori.nama_kategori');
-        $this->db->join('kategori','barang.kategori=kategori.id');
-        $this->db->where('id_barang',$id);
-        return $this->db->get('barang')->result()[0];
+        $set = $this->input->post();
+        $this->db->where('id',$id);
+        $this->db->update('aset',$set);
     }
-    public function insert($data = [])
+    public function delete($id)
     {
-        $result = $this->db->insert('barang', $data);
-        return $result;
+        $this->db->where('id',$id);
+        $this->db->delete('aset');
     }
-
-    public function getTotal1()
+    public function search($search)
     {
-        return $this->db->count_all('barang');
-    }
-
-    public function getTotal($search)
-    {
-        $query = $this->db->get('barang');
-        if($search != 'NIL')
-        {
-            $this->db->like('nama', $search);
-        }
-        return $this->db->count_all('barang');
-    }
-
-    public function show($id_barang)
-    {
-        $this->db->where('id_barang', $id_barang);
-        $query = $this->db->get('barang');
-        return $query->row();
-    }
-
-    public function update($id_barang, $data = [])
-    {
-        // TODO: set data yang akan di update
-        // https://www.codeigniter.com/userguide3/database/query_builder.html#updating-data
-
-        $this->db->where('id_barang', $id_barang);
-        $this->db->update('barang', $data);
-        return result;
-    }
-    
-    public function delete($id_barang)
-    {
-        // TODO: tambahkan logic penghapusan data
-        $this->db->where('id_barang', $id_barang);
-
-        $this->db->delete('barang');
+        $this->db->select('*');
+        $this->db->like('nama_aset',$search);
+        $query = $this->db->get("aset");
+        return $query->result();    
     }
 }
-
 /* End of file ModelName.php */

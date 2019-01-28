@@ -54,7 +54,7 @@
                 $data['username'] = $session_data['username'];
                 $data['role'] = $session_data['role'];
                 if ($data['role']=='Admin') {
-                    redirect('home/admin/');
+                    redirect('Admin');
                 }else{
                     redirect('home');
                 }
