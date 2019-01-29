@@ -16,7 +16,6 @@ class User_admin_model extends CI_Model {
         $result = $this->db->insert('user', $data);
         return $result;
     }
-
     public function insert()
     {
         $set = $this->input->post();

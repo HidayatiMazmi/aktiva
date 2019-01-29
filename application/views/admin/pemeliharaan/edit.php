@@ -17,7 +17,11 @@
                     <div class="form-group">
                       <label for="nama">pemeliharaan</label>
                       <input type="text" class="form-control" id="hasil_pemeliharaan" name="hasil_pemeliharaan" placeholder="Masukkan Pemeliharaan">
-                    </div>                  
+                    </div>              
+                    <div class="form-group">
+                      <label for="nama">Tanggal</label>
+                      <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Masukkan Tgl Pemeliharaan">
+                    </div>    
                       <a class="btn btn-info" href="<?php echo site_url('pemeliharaan/') ?>">Kembali</a>
                       <button type="submit" class="btn btn-primary">OK</button>
                       <?php echo form_close() ?>

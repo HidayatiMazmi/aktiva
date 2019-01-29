@@ -16,45 +16,40 @@
                   <?php echo validation_errors(); ?>
                     <div class="form-group">
                       <label for="nama">Nama</label>
-                      <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $aset->nama ?>" placeholder="Masukkan Nama">
+                      <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $user->nama ?>"placeholder="Masukkan Nama" >
                     </div>
                     <div class="form-group">
-                      <label for="nip">NIP</label>
-                      <input type="text" class="form-control" id="nip" name="nip" value="<?php echo $aset->nip ?>" placeholder="Masukkan NIP">
-                    </div>
-                    <div class="form-group">
-                      <label for="username">username</label>
-                      <input type="text" class="form-control" id="username" name="username" value="<?php echo $aset->username ?>" placeholder="Masukkan username">
-                    </div>
-                    <div class="form-group">
-                      <label for="password">password</label>
-                      <input type="text" class="form-control" id="password" name="password" value="<?php echo $aset->password ?>" placeholder="Masukkan password">
-                    </div>
-                    <div class="form-group">
-                      <label for="role">role</label>
+                      <label for="role">Role</label>
                       <select name="role" class="form-control">
-                        <option>admin</option>
-                        <option>user</option>
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
                       </select>
                       <script type="text/javascript">$("select[name='role']").val("<?php echo $user->role ?>")</script>
                     </div>
-                   
+                    <div class="form-group">
+                      <label for="nip">NIP</label>
+                      <input type="text" class="form-control" id="nip" name="nip" value="<?php echo $user->nip ?>" placeholder="Masukkan NIP">
+                    </div>
+                    <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="text" class="form-control" id="username" name="username" value="<?php echo $user->username ?>" placeholder="Masukkan username">
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="text" class="form-control" id="password" name="password" value="<?php echo $user->password ?>" placeholder="Masukkan password">
+                    </div>
                     <div class="form-group">
                       <label>File upload Photo</label>
-                      <input type="file" name="img[]" class="file-upload-default">
                       <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" id="photo" name="photo" disabled placeholder="Masukkan Foto">
                         <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-info" type="button">Upload</button>
+                          <input type="file" class="file-upload-browse btn btn-info" id="photo" name="photo" value="<?php echo $user->photo ?>" placeholder="Masukkan Foto">
                         </span>
                       </div>
                     </div>
-                    
-                      <a class="btn btn-info" href="<?php echo site_url('Asset/') ?>">Kembali</a>
+                      <a class="btn btn-info" href="<?php echo site_url('user_admin/') ?>">Kembali</a>
                       <button type="submit" class="btn btn-primary">OK</button>
                       <?php echo form_close() ?>
                     </div>
                 </div>
               </div>
-            
 <?php $this->load->view('admin/partials/base_end') ?>

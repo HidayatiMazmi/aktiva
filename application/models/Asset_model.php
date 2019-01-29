@@ -10,7 +10,7 @@ class Asset_model extends CI_Model {
     public function select_id($id)
     {
         return $this->db->where('id',$id)->get('aset')->result()[0];
-    }
+     }
 
     public function create($error='')
     {
@@ -44,4 +44,3 @@ class Asset_model extends CI_Model {
         return $query->result();    
     }
 }
-/* End of file ModelName.php */

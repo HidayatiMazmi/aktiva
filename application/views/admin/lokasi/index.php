@@ -32,10 +32,14 @@
                                 <tr>
                                     <td><?php echo $number++; ?></td>
                                     <td><?php echo $row->nama_lokasi ?></td>
-                                    <td><?php echo form_open('lokasi/destroy/'.$row->id); ?><a class="btn btn-info" href="<?php echo site_url('lokasi/edit/'.$row->id) ?>">Ubah</a>
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
-                                    <?php echo form_close() ?>
-                                    </td>
+<td>
+    <?php echo form_open('lokasi/destroy/'.$row->id); ?>
+    <a class="btn btn-info" href="<?php echo site_url('lokasi/edit/'.$row->id) ?>">
+    Ubah
+    </a>
+    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
+    <?php echo form_close() ?>
+</td>
                                 </tr>
                             <?php } ?>
                             </tbody>

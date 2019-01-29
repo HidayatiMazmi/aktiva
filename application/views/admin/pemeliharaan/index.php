@@ -52,6 +52,12 @@
           <div class="col-lg-12 grid-margin stretch-card">
         </div>       
       </div>
+
     </div>
 <!-- content-wrapper ends -->
+<link href="asset/css/bootrstrap.min.css" rel="stylesheet">
+<link href="asset/css/custom.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="assets/plugin/datepicker/css/bootstrap-datepicker.min.css">
+
+
 <?php $this->load->view('admin/partials/base_end') ?>

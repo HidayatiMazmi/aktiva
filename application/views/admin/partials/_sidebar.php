@@ -17,9 +17,6 @@
                   </div>
                 </div>
               </div>
-              <button class="btn btn-success btn-block">New Asset
-                <i class="mdi mdi-plus"></i>
-              </button>
             </div>
           </li>
           <li class="nav-item">
