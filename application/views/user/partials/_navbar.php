@@ -1,7 +1,7 @@
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="navbar-brand brand-logo" href="<?php echo base_url('home') ?>">
-          <img src="<?php echo base_url('assets/img/ico/logopgbesar.png');?>" alt="logo" />
+          <img src="<?php echo base_url('assets/img/ico/pgka.png');?>" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="<?php echo base_url('home') ?>">
           <img src="<?php echo base_url('assets/img/ico/logopgbesar.png');?>" alt="logo" />

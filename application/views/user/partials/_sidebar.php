@@ -15,9 +15,9 @@
                   </div>
                 </div>
               </div>
-              <button class="btn btn-success btn-block">New Project
+              <a class="btn btn-success btn-block" href="<?php echo base_url('aset/create/');?>">Tambah Aset
                 <i class="mdi mdi-plus"></i>
-              </button>
+              </a>
             </div>
           </li>
           <li class="nav-item">

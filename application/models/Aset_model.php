@@ -23,7 +23,7 @@ class Aset_model extends CI_Model {
         }      
 	}
 	public function show($id){
-		$this->db->select("`a`.`id` AS `id`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode_aset` AS `kode_aset`,`a`.`nilai_aset` AS `nilai_aset`,`a`.`tgl_terima` AS `tgl_terima`,`a`.`masa_pemakaian` AS `masa_pemakaian`,`a`.`kondisi_awal` AS `kondisi_awal`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`");
+		$this->db->select("`a`.`id` AS `id`,`a`.`foto_fisik_aset` AS `foto_fisik_aset`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode_aset` AS `kode_aset`,`a`.`nilai_aset` AS `nilai_aset`,`a`.`tgl_terima` AS `tgl_terima`,`a`.`masa_pemakaian` AS `masa_pemakaian`,`a`.`kondisi_awal` AS `kondisi_awal`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`");
         $this->db->where("((`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`)and (`a`.`id` = $id))");
         $this->db->from("((((`aset` `a` join `kategori` `k`) join `jenis_asset` `j`)join `lokasi` `l`)join `user` `u`)");
                 $query = $this->db->get();
@@ -36,23 +36,67 @@ class Aset_model extends CI_Model {
 		$query = $this->db->get('aset');
 		return $query->result_array();
 	}
-	public  function get_quick_list($s)  
+	public  function get_quick_list($s,$config)
 	{  
 		$this->db->select('j.*, l.*,k.*,a.*');
 		$this->db->from('aset as a');
 		$this->db->join('jenis_asset as j', 'j.id = a.id_jenis','left');
 		$this->db->join('kategori as k', 'k.id = a.id_kategori','left');
 		$this->db->join('lokasi as l', 'l.id = a.id_lokasi','left');
-		if($s['jenis_asset'] !="")
-		$this->db->like('a.id_jenis',$s['jenis_asset'],'both');
-		if($s['kategori'] !="")
-		$this->db->like('a.id_kategori',$s['kategori'],'both');
-		if($s['lokasi'] !="")
-		$this->db->like('a.id_lokasi', $s['lokasi'],'both');
+		if($s['id_jenis'] !="")
+		$this->db->like('a.id_jenis',$s['id_jenis'],'both');
+		if($s['id_kategori'] !="")
+		$this->db->like('a.id_kategori',$s['id_kategori'],'both');
+		if($s['id_lokasi'] !="")
+		$this->db->like('a.id_lokasi', $s['id_lokasi'],'both');
 		if($s['kunci'] !="")
 		$this->db->like('a.nama_aset', $s['kunci'],'both');
-		$query=$this->db->get()->result(); 
-		return $query;
+		$this->db->limit($config['per_page'], $this->uri->segment(3)); 
+		$hasilquery = $this->db->get();
+		if ($hasilquery->num_rows() > 0) {
+            foreach ($hasilquery->result() as $value) {
+                $data[]=$value;
+            }
+            return $data;
+        }      
+	}
+	public function insertAset($id_user)
+	{
+		$object = array('nama_aset' => $this->input->post('nama_aset'),
+						'id_jenis' => $this->input->post('id_jenis'),
+						'id_kategori' => $this->input->post('id_kategori'),
+						'id_lokasi' => $this->input->post('id_lokasi'),
+						'id_user' => $id_user,
+						'foto_fisik_aset' => $this->upload->data('file_name'),
+						'masa_pemakaian' => $this->input->post('masa_pemakaian'),
+						'nilai_aset' => $this->input->post('nilai_aset'),
+						'kode_aset' => $this->input->post('kode_aset'),
+						'jumlah_barang' => $this->input->post('jumlah_barang'),
+						'kondisi_awal' => $this->input->post('kondisi_awal'),
+						'kondisi_aset_sekarang' => $this->input->post('kondisi_aset_sekarang'),
+						'tgl_terima' => $this->input->post('tgl_terima')
+					);
+		$this->db->insert('aset',$object);
+
+		return $this->db->insert_id();
+	}
+	public  function get_quick_num($s)
+	{  
+		$this->db->select('j.*, l.*,k.*,a.*');
+		$this->db->from('aset as a');
+		$this->db->join('jenis_asset as j', 'j.id = a.id_jenis','left');
+		$this->db->join('kategori as k', 'k.id = a.id_kategori','left');
+		$this->db->join('lokasi as l', 'l.id = a.id_lokasi','left');
+		if($s['id_jenis'] !="")
+		$this->db->like('a.id_jenis',$s['id_jenis'],'both');
+		if($s['id_kategori'] !="")
+		$this->db->like('a.id_kategori',$s['id_kategori'],'both');
+		if($s['id_lokasi'] !="")
+		$this->db->like('a.id_lokasi', $s['id_lokasi'],'both');
+		if($s['kunci'] !="")
+		$this->db->like('a.nama_aset', $s['kunci'],'both');
+		$hasilquery = $this->db->get();
+		return $hasilquery->num_rows();
 	}
 	public function getKatAset(){
         $query = $this->db->get('kategori');

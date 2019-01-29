@@ -11,6 +11,14 @@
                   <?php if (isset($aset)) { ?>
                   <form class="form-sample">
                     <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Foto Fisik Aset</label>
+                          <div class="col-sm-9">
+                          <img height="42" width="42" src="<?php echo base_url();?>assets/img/aset/<?php echo $aset->foto_fisik_aset;?>">
+                          </div>
+                        </div>
+                      </div>
                       <div class="col-md-5">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Nama Aset</label>

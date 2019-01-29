@@ -7,6 +7,14 @@
             <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
+                <br>
+        <?php if(!empty(validation_errors())){ ?>
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <?php echo validation_errors(); ?>
+        </div>
+          <?php }?>
+
                   <h4 class="card-title">Pencarian Aset</h4>
                   <?php echo form_open('aset/search'); ?>
                   <form class="form-sample">
@@ -54,7 +62,7 @@
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Kata Kunci</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="Kata Kunci"/>
+                            <input type="text" name="kunci" class="form-control" placeholder="Kata Kunci"/>
                           </div>
                         </div>
                       </div>
@@ -146,7 +154,7 @@
                       
                         <div class="container">
                           <div class="row">
-                            <div class="col-12">
+                            <div class="col-1">
                               <div class="pagination">
                                 <?php echo $this->pagination->create_links(); ?>
                               </div>
