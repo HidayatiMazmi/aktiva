@@ -15,10 +15,6 @@
               <!-- <span class="badge badge-primary ml-1">New</span> -->
             </a>
           </li>
-          <li class="nav-item active">
-            <a href="<?php echo base_url('laporan');?>" class="nav-link">
-              <i class="mdi mdi-elevation-rise"></i>Laporan</a>
-          </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item dropdown d-none d-xl-inline-block">

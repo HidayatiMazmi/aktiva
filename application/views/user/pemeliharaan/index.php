@@ -15,44 +15,18 @@
         </div>
           <?php }?>
 
-                  <h4 class="card-title">Pencarian Aset</h4>
-                  <?php echo form_open('aset/search'); ?>
+                  <h4 class="card-title">Pencarian Jadwal Pemeliharaan</h4>
+                  <?php echo form_open('pemeliharaan_user/search'); ?>
                   <form class="form-sample">
                     <div class="row">
                       <div class="col-md-5">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Jenis Aset</label>
+                          <label class="col-sm-3 col-form-label">Hari</label>
                           <div class="col-sm-9">
-                            <select name="id_jenis" class="form-control"placeholder="Pilih Jenis">
-                            <option value="" selected="selected">Cari dengan jenis</option>
-                              <?php foreach($jenis_asset as $j) { ?>
-                              <option value="<?php echo $j['id']; ?>"><?php echo $j['nama_jenis']; ?></option>
-                              <?php } ?>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-5">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Kategori Aset</label>
-                          <div class="col-sm-9">
-                            <select name="id_kategori" class="form-control" placeholder="Pilih Kategori">
-                              <option value="" selected="selected">Cari dengan Kategori</option>
-                              <?php foreach($kategori as $k) { ?>
-                                <option value="<?php echo $k['id']; ?>"><?php echo $k['nama_kategori']; ?></option>
-                              <?php } ?>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-5">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Lokasi Aset</label>
-                          <div class="col-sm-9">
-                            <select name="id_lokasi" class="form-control" value="Pilih Lokasi">
-                              <option value="" selected="selected">Cari dengan Lokasi</option>
-                              <?php foreach($lokasi as $l) { ?>
-                                <option value="<?php echo $l['id']; ?>"><?php echo $l['nama_lokasi']; ?></option>
+                            <select name="id_hari" class="form-control"placeholder="Pilih Hari">
+                            <option value="" selected="selected">Cari dengan Hari</option>
+                              <?php foreach($hari as $h) { ?>
+                              <option value="<?php echo $h['id']; ?>"><?php echo $h['nama_hari']; ?></option>
                               <?php } ?>
                             </select>
                           </div>
@@ -63,6 +37,14 @@
                           <label class="col-sm-3 col-form-label">Kata Kunci</label>
                           <div class="col-sm-9">
                             <input type="text" name="kunci" class="form-control" placeholder="Kata Kunci"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-5">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Tanggal</label>
+                          <div class="col-sm-9">
+                            <input type="date" name="tanggal_pemeliharaan" class="form-control"/>
                           </div>
                         </div>
                       </div>

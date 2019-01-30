@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Jan 2019 pada 06.42
+-- Waktu pembuatan: 30 Jan 2019 pada 08.22
 -- Versi server: 10.1.36-MariaDB
 -- Versi PHP: 7.2.11
 
@@ -36,7 +36,9 @@ CREATE TABLE `aset` (
   `masa_pemakaian` varchar(50) NOT NULL,
   `foto_fisik_aset` varchar(1000) NOT NULL,
   `kondisi_awal` varchar(100) NOT NULL,
+  `kondisi_aset_sekarang` varchar(20) NOT NULL,
   `nilai_aset` int(20) NOT NULL,
+  `jumlah_barang` int(10) NOT NULL,
   `keterangan` varchar(1000) NOT NULL,
   `id_user` int(11) UNSIGNED NOT NULL,
   `id_jenis` int(11) UNSIGNED NOT NULL,
@@ -48,8 +50,34 @@ CREATE TABLE `aset` (
 -- Dumping data untuk tabel `aset`
 --
 
-INSERT INTO `aset` (`id`, `nama_aset`, `kode_aset`, `tgl_terima`, `masa_pemakaian`, `foto_fisik_aset`, `kondisi_awal`, `nilai_aset`, `keterangan`, `id_user`, `id_jenis`, `id_kategori`, `id_lokasi`) VALUES
-(1, 'komputer', '', '2018-05-03', '2 tahun', '', 'Baik', 4000000, '', 1, 1, 1, 2);
+INSERT INTO `aset` (`id`, `nama_aset`, `kode_aset`, `tgl_terima`, `masa_pemakaian`, `foto_fisik_aset`, `kondisi_awal`, `kondisi_aset_sekarang`, `nilai_aset`, `jumlah_barang`, `keterangan`, `id_user`, `id_jenis`, `id_kategori`, `id_lokasi`) VALUES
+(1, 'komputer', 'A01', '2018-05-03', '2 tahun', 'default.png', 'Baik', '', 4000000, 0, '', 1, 1, 1, 2),
+(2, 'Meja', 'A02', '2017-01-02', '2 tahun', 'default.png', 'Baik', '', 100000, 0, '', 2, 2, 2, 2),
+(5, 'kursi', 'k/tuk/2001', '2019-01-10', '10 tahun', 'mappin@2x3.png', 'Baik', 'Baik', 400000, 30, '', 2, 1, 1, 3),
+(6, 'Komputer', 'kom', '2019-01-30', '10 tahun', 'LAN-2.png', 'Baik', 'Baik', 400000, 30, '', 2, 1, 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `events`
+--
+
+CREATE TABLE `events` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `contact` varchar(20) NOT NULL,
+  `tanggal_mulai` date NOT NULL,
+  `tanggal_berakhir` date NOT NULL,
+  `keterangan` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `events`
+--
+
+INSERT INTO `events` (`id`, `nama`, `contact`, `tanggal_mulai`, `tanggal_berakhir`, `keterangan`) VALUES
+(1, 'Makan Makan', '08987654321', '2017-03-31', '2017-04-07', 'Pelepasan macan tutul'),
+(2, 'Ngumpul', '08234567890', '2017-04-01', '2017-04-01', 'Lokasi @kedai Mama');
 
 -- --------------------------------------------------------
 
@@ -102,16 +130,18 @@ INSERT INTO `jenis_asset` (`id`, `nama_jenis`) VALUES
 
 CREATE TABLE `kategori` (
   `id` int(11) UNSIGNED NOT NULL,
-  `nama_kategori` varchar(1000) NOT NULL
+  `nama_kategori` varchar(1000) NOT NULL,
+  `id_detail` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `kategori`
 --
 
-INSERT INTO `kategori` (`id`, `nama_kategori`) VALUES
-(1, 'Perangkat Elektronik'),
-(2, 'Tanah');
+INSERT INTO `kategori` (`id`, `nama_kategori`, `id_detail`) VALUES
+(1, 'Perangkat Elektronik', 0),
+(2, 'Tanah', 0),
+(3, 'Kendaraan', 0);
 
 -- --------------------------------------------------------
 
@@ -121,16 +151,22 @@ INSERT INTO `kategori` (`id`, `nama_kategori`) VALUES
 
 CREATE TABLE `lokasi` (
   `id` int(11) UNSIGNED NOT NULL,
-  `nama_lokasi` varchar(1000) NOT NULL
+  `nama_lokasi` varchar(1000) NOT NULL,
+  `alamat` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `lokasi`
 --
 
-INSERT INTO `lokasi` (`id`, `nama_lokasi`) VALUES
-(1, 'Blitar'),
-(2, 'Malang');
+INSERT INTO `lokasi` (`id`, `nama_lokasi`, `alamat`) VALUES
+(1, 'Kantor Wilayah ', 'Blitar'),
+(2, 'R.Pemimpin', 'Kantor Pusat Malang'),
+(3, 'R. Kabag TUK/Tanaman', 'Kantor Pusat Malang'),
+(4, 'R.Rapat Kecil', 'Kantor Pusat Malang'),
+(5, 'R. Rapat Besar', 'Kantor Pusat Malang'),
+(6, 'R. Makan ', 'Kantor Pusat Malang'),
+(7, 'Kantor Tanaman', 'Kantor Pusat Malang');
 
 -- --------------------------------------------------------
 
@@ -143,15 +179,16 @@ CREATE TABLE `pemeliharaan` (
   `hasil_pemeliharaan` varchar(20) NOT NULL,
   `id_aset` int(11) UNSIGNED NOT NULL,
   `tanggal_pemeliharaan` date NOT NULL,
-  `id_hari` int(11) UNSIGNED NOT NULL
+  `id_hari` int(11) UNSIGNED NOT NULL,
+  `keterangan` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `pemeliharaan`
 --
 
-INSERT INTO `pemeliharaan` (`id`, `hasil_pemeliharaan`, `id_aset`, `tanggal_pemeliharaan`, `id_hari`) VALUES
-(1, 'Baik', 1, '2019-01-10', 1);
+INSERT INTO `pemeliharaan` (`id`, `hasil_pemeliharaan`, `id_aset`, `tanggal_pemeliharaan`, `id_hari`, `keterangan`) VALUES
+(1, 'Baik', 1, '2019-01-10', 1, '');
 
 -- --------------------------------------------------------
 
@@ -174,8 +211,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `nama`, `nip`, `role`, `photo`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '1', 'Admin', ''),
-(2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', '2', 'User', '');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '1', 'Admin', 'default.png'),
+(2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', '2', 'User', 'default.png'),
+(3, 'ida', 'ida', 'ida', '201002', 'User', 'logoMG_(2).png');
 
 --
 -- Indexes for dumped tables
@@ -190,6 +228,12 @@ ALTER TABLE `aset`
   ADD KEY `id_kategori` (`id_jenis`),
   ADD KEY `id_kategori_2` (`id_kategori`),
   ADD KEY `id_lokasi` (`id_lokasi`);
+
+--
+-- Indeks untuk tabel `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `hari`
@@ -207,7 +251,8 @@ ALTER TABLE `jenis_asset`
 -- Indeks untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_detail` (`id_detail`);
 
 --
 -- Indeks untuk tabel `lokasi`
@@ -237,7 +282,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `aset`
 --
 ALTER TABLE `aset`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `events`
+--
+ALTER TABLE `events`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `hari`
@@ -255,13 +306,13 @@ ALTER TABLE `jenis_asset`
 -- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `lokasi`
 --
 ALTER TABLE `lokasi`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `pemeliharaan`
@@ -273,7 +324,7 @@ ALTER TABLE `pemeliharaan`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
