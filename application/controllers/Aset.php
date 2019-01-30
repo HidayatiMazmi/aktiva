@@ -106,7 +106,7 @@ class Aset extends CI_Controller {
 					$this->load->view('tutorial/update',$data);
 					$this->load->view('layouts/base_end');
 				} else {
-					$this->Tutorial_model->updateAsetWithImage($idUser);
+					$this->Tutorial_model->updateAsetWithImage($id);
 					echo "<script>alert('Successfully Updated'); </script>";
 					redirect('tutorial/edit/' . $id, 'refresh');
 				}
