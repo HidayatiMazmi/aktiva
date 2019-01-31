@@ -5,7 +5,7 @@
           <div class="row purchace-popup">
             <div class="col-12">
               <span class="d-block d-md-flex align-items-center">
-                <p>Welkam Mimin</p>
+              <p>Hello, <?php echo $username;?>!</p>
               </span>
             </div>
           </div>
@@ -30,7 +30,11 @@
                         <th>Foto Asset</th>
                         <th>Kondisi Awal</th>
                         <th>Nilai Asset</th>
+                        <th>Jumlah barang</th>
                         <th>Keterangan</th>
+                        <th>Jenis</th>
+                        <th>Kategori</th>
+                        <th>Lokasi</th>
                         <th><a class="btn btn-primary" href="<?php echo base_url('Asset/tambah/') ?>">Tambah</a></th>
                       </thead>
                       <tbody>
@@ -44,11 +48,14 @@
                             <td><?php echo $row->foto_fisik_aset ?></td>
                             <td><?php echo $row->kondisi_awal ?></td>
                             <td><?php echo $row->nilai_aset ?></td>
+                            <td><?php echo $row->jumlah_barang ?></td>
                             <td><?php echo $row->keterangan ?></td>
-
+                            <td><?php echo $row->id_jenis ?></td>
+                            <td><?php echo $row->id_kategori ?></td>
+                            <td><?php echo $row->id_lokasi ?></td>
                             <td>
                                 <?php echo form_open('Asset/destroy/'.$row->id); ?>
-                                <a class="btn btn-info" href="<?php echo site_url('Asset/update/'.$row->id) ?>">Ubah</a>
+                                <a class="btn btn-info" href="<?php echo site_url('Asset/edit/'.$row->id) ?>">Ubah</a>
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
                                 <?php echo form_close() ?>
                             </td>

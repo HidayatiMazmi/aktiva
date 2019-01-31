@@ -5,8 +5,7 @@
           <div class="row purchace-popup">
             <div class="col-12">
               <span class="d-block d-md-flex align-items-center">
-                <p>Welkam Mimin</p>
-              </span>
+              <p>Hello, <?php echo $username;?>!</p>              </span>
             </div>
           </div>
           <!--  -->

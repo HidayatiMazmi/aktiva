@@ -11,6 +11,13 @@ class Lokasi_model extends CI_Model {
     {
         return $this->db->where('id',$id)->get('lokasi')->result()[0];
     }
+    public function search($search)
+    {
+        $this->db->select('*');
+        $this->db->like('nama_lokasi',$search);
+        $query = $this->db->get("lokasi");
+        return $query->result();    
+    }
     public function insert()
     {
         $set = $this->input->post();
@@ -27,12 +34,6 @@ class Lokasi_model extends CI_Model {
         $this->db->where('id',$id);
         $this->db->delete('lokasi');
     }
-    public function search($search)
-    {
-        $this->db->select('*');
-        $this->db->like('nama_lokasi',$search);
-        $query = $this->db->get("lokasi");
-        return $query->result();    
-    }
+   
 }
 /* End of file ModelName.php */

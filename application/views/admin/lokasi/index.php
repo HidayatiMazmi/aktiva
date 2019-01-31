@@ -5,8 +5,7 @@
           <div class="row purchace-popup">
             <div class="col-12">
               <span class="d-block d-md-flex align-items-center">
-                <p>Welkam Mimin</p>
-              </span>
+              <p>Hello, <?php echo $username;?>!</p>              </span>
             </div>
           </div>
           <!--  -->
@@ -18,13 +17,14 @@
                       <input class="form-control" type="text" name="search" value="" placeholder="Masukkan Lokasi. . .">
                       <input type="submit" class="btn btn-primary" value="search">
                       <a href="<?php echo site_url("Lokasi/index"); ?>" class="btn btn-primary">Show All</a>
-                    <?php ?>
+                      <?php echo form_close()?>
 
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>
                                 <th>No</th>
                                 <th>Lokasi</th>
+                                <!-- <th>Lantai</th> -->
                                 <th><a class="btn btn-primary" href="<?php echo site_url('lokasi/create/') ?>">Tambah</a></th>
                             </thead>
                             <tbody>
@@ -32,6 +32,8 @@
                                 <tr>
                                     <td><?php echo $number++; ?></td>
                                     <td><?php echo $row->nama_lokasi ?></td>
+                                    <!-- <td><?php echo $row->lantai ?></td> -->
+                                    
 <td>
     <?php echo form_open('lokasi/destroy/'.$row->id); ?>
     <a class="btn btn-info" href="<?php echo site_url('lokasi/edit/'.$row->id) ?>">

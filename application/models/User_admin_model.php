@@ -13,21 +13,26 @@ class User_admin_model extends CI_Model {
     }
     public function insert_user($data = [])
     {
+        $set['password'] = md5($set['password']);
         $result = $this->db->insert('user', $data);
         return $result;
     }
     public function insert()
     {
-        $set = $this->input->post();
-        $set['password'] = md5($set['password']);
-        $this->db->insert('user',$set);
+        $password = $this->input->post('password');
+        $pass = md5($password);
+        $object = array('nama' => $this->input->post('nama'),
+                        'nip' => $this->input->post('nip'),
+                        'username' => $this->input->post('username'),
+						'role' => $this->input->post('role'), 
+						'password' => $pass,
+						'photo' => $this->upload->data('file_name'));
+        $this->db->insert('user',$object);
     }
-    public function update($id)
+    public function update($id,$data)
     {
-        $set = $this->input->post();
-        $set['password'] = md5($set['password']);
         $this->db->where('id',$id);
-        $this->db->update('user',$set);
+        $this->db->update('user',$data);
     }
     public function delete($id)
     {

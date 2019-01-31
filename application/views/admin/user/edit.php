@@ -36,13 +36,14 @@
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input type="text" class="form-control" id="password" name="password" value="<?php echo $user->password ?>" placeholder="Masukkan password">
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan password">
                     </div>
                     <div class="form-group">
                       <label>File upload Photo</label>
                       <div class="input-group col-xs-12">
                         <span class="input-group-append">
-                          <input type="file" class="file-upload-browse btn btn-info" id="photo" name="photo" value="<?php echo $user->photo ?>" placeholder="Masukkan Foto">
+                          <input type="file" class="file-upload-browse btn btn-info" 
+                          id="photo" name="photo" placeholder="Masukkan Foto">
                         </span>
                       </div>
                     </div>

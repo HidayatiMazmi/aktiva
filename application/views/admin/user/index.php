@@ -1,11 +1,12 @@
 <?php $this->load->view('admin/partials/base_start') ?>
+
         <!-- iki index -->
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row purchace-popup">
             <div class="col-12">
               <span class="d-block d-md-flex align-items-center">
-                <p>Welkam Mimin</p>
+              <p>Hello, <?php echo $username;?>!</p>
               </span>
             </div>
           </div>
@@ -32,7 +33,7 @@
                         <th><a class="btn btn-primary" href="<?php echo base_url('User_admin/tambah/') ?>">Tambah</a></th>
                       </thead>
                       <tbody>
-                      <?php $number = 1; foreach($user as $row) { ?>
+                      <?php $number = 1; foreach($user1 as $row) { ?>
                         <tr>
                             <td><?php echo $number++; ?></td>
                             <td><?php echo $row->nama ?></td>

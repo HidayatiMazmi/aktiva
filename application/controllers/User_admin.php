@@ -9,26 +9,56 @@ class User_admin extends CI_Controller {
         if($this->session->userdata('logged_in')['role'] != "Admin"){
             redirect("Login");
         }
+        $this->load->model('User_model');
     }
 	public function index()
 	{
-		$data['user'] = $this->User_admin_model->select();
-		$this->load->view('admin/user/index',$data);
-    }  
+        if($this->session->has_userdata('logged_in')) {
+            $session_data = $this->session->userdata('logged_in');
+            if($session_data['role'] != 'Admin') {
+                redirect('Login');
+            }else{
+                $data = [
+                    'title' => 'Admin',
+                    'username' => $session_data['username'],
+                    'role' => $session_data['role'],
+                    'id' => $session_data['id'],
+                ];
+        $data['user1'] = $this->User_admin_model->select();
+        $id = $data['id'];
+        $data['user2'] = $this->User_model->selectAll($id);
+        $this->load->view('admin/user/index',$data);
+            }
+        }
+    }
     public function search()
     {
-        if($this->input->post('search') != null)
-        {
-            $this->load->model('User_admin_model');
-            $search = $this->User_admin_model->search($this->input->post('search'));
-            $data = [
-                'user' => $search,
-            ];
-            $this->load->view('admin/user/index', $data);
-        }else
-            {
-            echo"data tidak ditemukan";
-            }
+        if($this->session->has_userdata('logged_in')) {
+            $session_data = $this->session->userdata('logged_in');
+            if($session_data['role'] != 'Admin') {
+                redirect('Login');
+            }else{
+                
+                if($this->input->post('search') != null)
+                {
+                    $this->load->model('User_admin_model');
+                    $search = $this->User_admin_model->search($this->input->post('search'));
+                    $data = [
+                        'title' => 'Admin',
+                        'username' => $session_data['username'],
+                        'role' => $session_data['role'],
+                        'id' => $session_data['id'],
+                        'user1' => $search,
+                    ];
+                    $id = $data['id'];
+                    $data['user2'] = $this->User_model->selectAll($id);
+                    $this->load->view('admin/user/index', $data);
+                }else
+                    {
+                    echo"data tidak ditemukan";
+                    }
+                }
+    }
 	}
     public function validate($dataval)
     {
@@ -69,22 +99,41 @@ class User_admin extends CI_Controller {
     } 
 	public function tambah()
 	{
-		$this->load->view('admin/user/create');
+        $session_data=$this->session->userdata('logged_in');
+		$data['username']=$session_data['username'];
+        $data['role']=$session_data['role'];
+        $data['id']=$session_data['id'];
+		$id_user = $data ['id'];
+		$data['user2'] = $this->User_model->selectAll($id_user);
+		$this->load->view('admin/user/create',$data);
 	}
 	public function create()
 	{
+        $session_data=$this->session->userdata('logged_in');
+		$data['username']=$session_data['username'];
+        $data['role']=$session_data['role'];
+        $data['id']=$session_data['id'];
+		$id_user = $data ['id'];
+		$data['user2'] = $this->User_model->selectAll($id_user);
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nama','nama',"required");
         $this->form_validation->set_rules('role','role',"required");
         $this->form_validation->set_rules('nip','nip',"required");
 		$this->form_validation->set_rules('username','username',"required");
 		$this->form_validation->set_rules('password','password',"required");
-		$this->form_validation->set_rules('photo','photo',"required");
+        $this->form_validation->set_rules('photo','photo',"required");
+        $config['upload_path']='./assets/img/upload/';
+			$config['allowed_types']='gif|jpg|jpeg|png';
+			$config['max_size']=1000000000;
+			$config['max_width']=10240;
+			$config['max_height']=7680;
+
+			$this->load->library('upload', $config);
 		if ($this->form_validation->run() == false) {
-			$this->load->view('admin/user/create');
+			$this->load->view('admin/user/create',$data);
 		}else{
 			$this->User_admin_model->insert();
-			redirect('User');
+			$this->load->view('admin/user/index',$data);
 		}
 	}
 	public function update()
@@ -93,19 +142,57 @@ class User_admin extends CI_Controller {
 	}
 	public function edit($id)
 	{
+        $session_data=$this->session->userdata('logged_in');
+		$data['username']=$session_data['username'];
+        $data['role']=$session_data['role'];
+        $data['id']=$session_data['id'];
+        $id_user = $data ['id'];
+        $data['user2'] = $this->User_model->selectAll($id_user);
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nama','nama',"required");
         $this->form_validation->set_rules('role','role',"required");
         $this->form_validation->set_rules('nip','nip',"required");
 		$this->form_validation->set_rules('username','username',"required");
 		$this->form_validation->set_rules('password','password',"required");
-		$this->form_validation->set_rules('photo','photo',"required");
+        // $this->form_validation->set_rules('photo','photo',"required"); 
+        $nama = $this->input->post('nama');
+		$role = $this->input->post('role');
+        $nip = $this->input->post('nip');
+		$username = $this->input->post('username');
+        $password = $this->input->post('password');
+        $pass = md5($password);
+		$photo = $this->input->post('photo');
+        $dataval = $nama;
+        $errorval = $this->validate($dataval);  
+        $config['upload_path']          = './assets/images/faces/';
+		 $config['allowed_types']        = 'gif|jpg|png';
+		 $config['max_size']             = 1000000000;
+		 $config['max_width']            = 10240;
+		 $config['max_height']           = 7680;
+         $this->load->library('upload', $config);    
+         $data['user'] = $this->User_admin_model->select_id($id);
 		if ($this->form_validation->run() == false) {
-			$data['user'] = $this->User_admin_model->select_id($id);
 			$this->load->view('admin/user/edit',$data);
 		}else{
-			$this->User_admin_model->update($id);
-			redirect('User');
+            if ( ! $this->upload->do_upload('photo'))
+            {
+                $data['error'] = $this->upload->display_errors();
+			$this->load->view('admin/user/edit',$data);
+            }
+            else
+            {
+                // Insert data
+                $object = [
+                    'nama' => $nama,
+                    'role' => $role,
+					'nip' => $nip,
+					'username' => $username,
+					'password' => $pass,
+                    'photo' => $this->upload->data('file_name'),
+                    ];
+                    $this->User_admin_model->update($id,$object);
+                    redirect(User_admin);
+            }
 		}
 	}
 	public function store()
@@ -116,7 +203,8 @@ class User_admin extends CI_Controller {
 		$role = $this->input->post('role');
         $nip = $this->input->post('nip');
 		$username = $this->input->post('username');
-		$password = $this->input->post('password');
+        $password = $this->input->post('password');
+        $pass = md5($password);
 		$photo = $this->input->post('photo');
         $dataval = $nama;
         $errorval = $this->validate($dataval);
@@ -143,7 +231,7 @@ class User_admin extends CI_Controller {
                     'role' => $role,
 					'nip' => $nip,
 					'username' => $username,
-					'password' => $password,
+					'password' => $pass,
                     'photo' => $this->upload->data('file_name'),
                     ];
                 $result = $this->User_admin_model->insert_user($data);

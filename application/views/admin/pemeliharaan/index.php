@@ -1,11 +1,12 @@
 <?php $this->load->view('admin/partials/base_start') ?>
+
         <!-- iki index -->
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row purchace-popup">
             <div class="col-12">
               <span class="d-block d-md-flex align-items-center">
-                <p>Welkam Mimin</p>
+              <p>Hello, <?php echo $username;?>!</p>
               </span>
             </div>
           </div>
@@ -26,6 +27,8 @@
                                 <th>No</th>
                                 <th>Hasil Pemeliharaan</th>
                                 <th>Tanggal Pemeliharaan</th>
+                                <th>Aset</th>
+                                <th>Hari</th>
                                 <th><a class="btn btn-primary" href="<?php echo site_url('Pemeliharaan/create/') ?>">Tambah</a></th>
                             </thead>
                             <tbody>
@@ -34,6 +37,8 @@
                                     <td><?php echo $number++; ?></td>
                                     <td><?php echo $row->hasil_pemeliharaan ?></td>
                                     <td><?php echo $row->tanggal_pemeliharaan ?></td>
+                                    <td><?php echo $row->id_aset ?></td>
+                                    <td><?php echo $row->id_hari ?></td>
                                     <td><?php echo form_open('Pemeliharaan/destroy/'.$row->id); ?><a class="btn btn-info" href="<?php echo site_url('Pemeliharaan/edit/'.$row->id) ?>">Ubah</a>
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
                                     <?php echo form_close() ?>

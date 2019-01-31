@@ -26,6 +26,9 @@ class Admin extends CI_Controller {
                     'countAsetNonBergerak' => $this->Home_model->_getAllAsetNonBergerak(),
                     'countAllAset' => $this->Aset_model->getDataAllAset(),
                 ];
+
+                $id = $data['id'];
+                $data['user2'] = $this->User_model->selectAll($id);
                 $this->load->view('admin/index', $data);
             }
         } else {

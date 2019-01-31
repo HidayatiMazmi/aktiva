@@ -15,14 +15,22 @@
               <?php echo form_open_multipart(''); ?>
               <?php echo validation_errors(); ?>
               <div class="form-group">
+                <label for="nama">ID Pemeliharaan</label>
+                <input type="text" class="form-control" id="id" name="id" placeholder="Masukkan ID Pemeliharaan">
+              </div>
+              <div class="form-group">
                 <label for="nama">Pemeliharaan</label>
                 <input type="text" class="form-control" id="pemeliharaan" name="hasil_pemeliharaan" placeholder="Masukkan Hasil Pemeliharaan">
               </div>
               <div class="form-group">
-                <label for="nama">Tanggal</label>
+                <label for="nama">Tanggal Pemeliharaan</label>
                 <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Masukkan Tgl Pemeliharaan">
               </div>
-
+              <div class="form-group">
+                <label for="nama">ID Aset</label>
+                <input type="text" class="form-control" id="id_aset" name="id_aset" placeholder="Masukkan ID Aset">
+              </div>
+              
                 <a class="btn btn-info" href="<?php echo site_url('pemeliharaan/') ?>">Kembali</a>
                 <button type="submit" class="btn btn-primary">OK</button>
                 <?php echo form_close() ?>
