@@ -45,7 +45,9 @@
                             <td><?php echo $row->kode_aset ?></td>
                             <td><?php echo $row->tgl_terima ?></td>
                             <td><?php echo $row->masa_pemakaian ?></td>
-                            <td><?php echo $row->foto_fisik_aset ?></td>
+                            <td>
+                            <img src="<?php echo base_url('assets/images/faces/'.$row->foto_fisik_aset)?>" width="100">
+                            </td>
                             <td><?php echo $row->kondisi_awal ?></td>
                             <td><?php echo $row->nilai_aset ?></td>
                             <td><?php echo $row->jumlah_barang ?></td>

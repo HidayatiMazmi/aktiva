@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <?php echo form_open("Jenis_asset/search")?>
                       <input class="form-control" type="text" name="search" value="" placeholder="Masukkan Jenis Asset. . .">
-                      <input type="submit" class="btn btn-primary" value="search">
+                      <input type="submit" class="btn btn-primary" value="Search">
                       <a href="<?php echo site_url("Jenis_asset/index"); ?>" class="btn btn-primary">Show All</a>
                     <?php ?>
 

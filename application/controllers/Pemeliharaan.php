@@ -34,7 +34,6 @@ class Pemeliharaan extends CI_Controller {
 			}
 	}
 }
-
     public function search()
     {
 		$session_data=$this->session->userdata('logged_in');
@@ -51,7 +50,7 @@ class Pemeliharaan extends CI_Controller {
         }else{
             echo"data tidak ditemukan";
         }
-    }
+	}
 	public function create()
 	{
 		$session_data=$this->session->userdata('logged_in');

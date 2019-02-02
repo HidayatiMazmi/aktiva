@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <?php echo form_open("Kategori/search")?>
                       <input class="form-control" type="text" name="search" value="" placeholder="Masukkan Kategori. . .">
-                      <input type="submit" class="btn btn-primary" value="search">
+                      <input type="submit" class="btn btn-primary" value="Search">
                       <a href="<?php echo site_url("Kategori/index"); ?>" class="btn btn-primary">Show All</a>
                     <?php ?>
 

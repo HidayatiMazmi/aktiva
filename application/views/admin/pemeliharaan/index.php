@@ -17,10 +17,9 @@
                 <div class="card-body">
                     <?php echo form_open("Pemeliharaan/search")?>
                       <input class="form-control" type="text" name="search" value="" placeholder="Masukkan Pemeliharaan. . .">
-                      <input type="submit" class="btn btn-primary" value="search">
+                      <input type="submit" class="btn btn-primary" value="Search">
                       <a href="<?php echo site_url("Pemeliharaan/index"); ?>" class="btn btn-primary">Show All</a>
                     <?php ?>
-
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <thead>

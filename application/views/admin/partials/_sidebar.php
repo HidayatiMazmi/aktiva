@@ -26,33 +26,54 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('User_admin') ?>">
-              <i class="menu-icon mdi mdi-account-box"></i>
-              <span class="menu-title">User</span>
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-bookmark"></i>
+              <span class="menu-title">Data Master</span>
+              <i class="menu-arrow"></i>
             </a>
+
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url('User_admin') ?>">
+                  <i class="menu-icon mdi mdi-account-box"></i>
+                  <span class="menu-title">User</span>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url('Jenis_asset') ?>">
+                  <i class="menu-icon mdi mdi-view-list"></i>
+                  <span class="menu-title">Jenis Aset</span>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url('Kategori') ?>">
+                  <i class="menu-icon mdi mdi-layers"></i>
+                  <span class="menu-title">Kategori</span>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url('Lokasi') ?>">
+                  <i class="menu-icon mdi mdi-map-marker-radius"></i>
+                  <span class="menu-title">Lokasi</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
           </li>
+
+          <!-- end -->
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('Asset') ?>">
               <i class="menu-icon mdi mdi-briefcase"></i>
-              <span class="menu-title">Asset</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('Jenis_asset') ?>">
-              <i class="menu-icon mdi mdi-view-list"></i>
-              <span class="menu-title">Jenis Asset</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('Kategori') ?>">
-              <i class="menu-icon mdi mdi-layers"></i>
-              <span class="menu-title">Kategori</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('Lokasi') ?>">
-              <i class="menu-icon mdi mdi-map-marker-radius"></i>
-              <span class="menu-title">Lokasi</span>
+              <span class="menu-title">Aset</span>
             </a>
           </li>
           <li class="nav-item">
