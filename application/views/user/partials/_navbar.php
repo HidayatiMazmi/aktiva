@@ -11,7 +11,7 @@
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
           <li class="nav-item">
             <a href="<?php echo base_url('master');?>" class="nav-link">
-            <i class="mdi mdi-home"></i>Master
+            <i class="mdi mdi-home"></i>Aset
               <!-- <span class="badge badge-primary ml-1">New</span> -->
             </a>
           </li>

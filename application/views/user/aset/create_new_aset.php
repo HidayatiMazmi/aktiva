@@ -71,14 +71,6 @@
                       </div>
                       <div class="col-md-5">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Kondisi Aset Sekarang</label>
-                          <div class="col-sm-9">
-                            <input type="text" id="kondisi_aset_sekarang" name="kondisi_aset_sekarang" class="form-control" placeholder="Kondisi Aset Sekarang"/>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-5">
-                        <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Jumlah Barang</label>
                           <div class="col-sm-9">
                             <input type="text" id="jumlah_barang" name="jumlah_barang" class="form-control" placeholder="Jumlah Barang"/>

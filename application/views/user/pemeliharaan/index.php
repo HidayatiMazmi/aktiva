@@ -65,12 +65,12 @@
                       <thead>
                         <tr>
                           <th>#</th>
+                          <th>No Pemeliharaan</th>
                           <th>Nama Aset</th>
                           <th>Kode Aset</th>
-                          <th>Jenis Aset</th>
-                          <th>Kategori Aset</th>
-                          <th>Tanggal Terima</th>
-                          <th>Masa Pemakaian</th>
+                          <th>Tanggal Pemeliharaan</th>
+                          <th>Hasil Pemeliharaan</th>
+                          <th>Hari Pemeliharaan</th>
                           <th>Act</th>
                         </tr>
                       </thead>
@@ -80,12 +80,12 @@
                         <?php foreach($results as $row) { ?>
                         <tr>
                           <td><?php echo $i++; ?></td>
+                          <td><?php echo $row->no_pemeliharaan; ?></td>
                           <td><?php echo $row->nama_aset; ?></td>
                           <td><?php echo $row->kode_aset; ?></td>
-                          <td><?php echo $row->nama_jenis; ?></td>
-                          <td><?php echo $row->nama_kategori; ?></td>
-                          <td><?php echo $row->tgl_terima; ?></td>
-                          <td><?php echo $row->masa_pemakaian; ?></td>
+                          <td><?php echo $row->tanggal_pemeliharaan; ?></td>
+                          <td><?php echo $row->hasil_pemeliharaan; ?></td>
+                          <td><?php echo $row->nama_hari; ?></td>
                           <td>
                             <ul class="navbar-nav navbar-nav-right">
                               <li class="nav-item dropdown d-none d-xl-inline-block">
@@ -93,13 +93,13 @@
                                   <i class="mdi mdi-settings"></i>Action
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                                  <a class="dropdown-item mt-2" href="<?php echo site_url("aset/show/".$row->id); ?>">
+                                  <a class="dropdown-item mt-2" href="<?php echo site_url("pemeliharaan_user/show/".$row->id); ?>">
                                   <i class="mdi mdi-monitor"></i>
                                   </a>
-                                  <a class="dropdown-item mt-2" href="<?php echo site_url("aset/update/".$row->id); ?>">
+                                  <a class="dropdown-item mt-2" href="<?php echo site_url("pemeliharaan_user/update/".$row->id); ?>">
                                   <i class="mdi mdi-pencil-box-outline"></i>
                                   </a>
-                                  <a class="dropdown-item" href="<?php echo site_url("aset/delete/".$row->id); ?>">
+                                  <a class="dropdown-item" href="<?php echo site_url("pemeliharaan_user/delete/".$row->id); ?>">
                                   <i class="mdi mdi-delete"></i>
                                   </a>
                                 </div>
@@ -140,7 +140,7 @@
                               </div>
                             </div>
                         <div class="col-md-2-right">
-                        <button type="button" class="btn btn-primary btn-sm"><i class="mdi mdi-printer"></i>Cetak Laporan Aset</button>
+                        <a href="<?php echo base_url(); ?>pemeliharaan_user/downloadLaporan/" class="btn btn-primary btn-sm">Download Laporan Pemeliharaan<i class="mdi mdi-printer"></i></a>
                       </div>
                 </div>
               </div>

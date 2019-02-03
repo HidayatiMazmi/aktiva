@@ -37,6 +37,11 @@
                 <li class="nav-item">
                   <a class="nav-link" href="<?php echo base_url('pemeliharaan_user') ?>">Jadwal Pemeliharaan</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url('pemeliharaan_user/create/');?>">Tambah Jadwal
+                  <i class="mdi mdi-plus"></i>
+                  </a>
+                </li>
               </ul>
             </div>
           </li>

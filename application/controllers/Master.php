@@ -48,7 +48,7 @@ class Master extends CI_Controller {
             $data["jenis_asset"] = $this->Aset_model->getJenisAset();
             $id = $data['id'];
             $data['user'] = $this->User_model->selectAll($id);
-            $this->load->view('user/master', $data);
+            $this->load->view('user/aset/index', $data);
         }
     }
 

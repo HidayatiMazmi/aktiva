@@ -89,13 +89,37 @@
                           <th>Kategori Aset</th>
                           <th>Tanggal Terima</th>
                           <th>Masa Pemakaian</th>
+                          <th>Kondisi Aset</th>
                           <th>Act</th>
                         </tr>
                       </thead>
                       <?php if (isset($results)) { 
                         $i=1; ?>
                       <tbody>
-                        <?php foreach($results as $row) { ?>
+                      <style>
+                        baik  {
+                          background-color: #80ced6;
+                        }
+                        rusak  {
+                          background-color: #f18973;
+                        }
+                        kosong  {
+                          background-color: #e8de81;
+                        }
+                      </style>
+                        <?php foreach($results as $row) { 
+                          if($row->kondisi_awal=="Baik")
+                          {
+                            $status="<baik>&nbsp;Baik&nbsp;</baik>";
+                          }
+                          else if($row->kondisi_awal=="Rusak")
+                          {
+                            $status="<rusak>&nbsp;Rusak&nbsp;</rusak>";
+                          }
+                          else
+                          {
+                            $status="<kosong>&nbsp;Kosong&nbsp;</kosong>";
+                          }?>
                         <tr>
                           <td><?php echo $i++; ?></td>
                           <td><?php echo $row->nama_aset; ?></td>
@@ -104,6 +128,7 @@
                           <td><?php echo $row->nama_kategori; ?></td>
                           <td><?php echo $row->tgl_terima; ?></td>
                           <td><?php echo $row->masa_pemakaian; ?></td>
+                          <td><?php echo $status; ?></td>
                           <td>
                             <ul class="navbar-nav navbar-nav-right">
                               <li class="nav-item dropdown d-none d-xl-inline-block">
@@ -158,7 +183,7 @@
                               </div>
                             </div>
                         <div class="col-md-2-right">
-                        <button type="button" class="btn btn-primary btn-sm"><i class="mdi mdi-printer"></i>Cetak Laporan Aset</button>
+                        <a href="<?php echo base_url(); ?>aset/downloadLaporan/" class="btn btn-primary btn-sm">Download Laporan Aset<i class="mdi mdi-printer"></i></a>
                       </div>
                 </div>
               </div>
