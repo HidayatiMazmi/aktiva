@@ -31,7 +31,6 @@
                         <th>Kondisi Awal</th>
                         <th>Nilai Asset</th>
                         <th>Jumlah barang</th>
-                        <th>Keterangan</th>
                         <th>Jenis</th>
                         <th>Kategori</th>
                         <th>Lokasi</th>
@@ -51,7 +50,6 @@
                             <td><?php echo $row->kondisi_awal ?></td>
                             <td><?php echo $row->nilai_aset ?></td>
                             <td><?php echo $row->jumlah_barang ?></td>
-                            <td><?php echo $row->keterangan ?></td>
                             <td><?php echo $row->id_jenis ?></td>
                             <td><?php echo $row->id_kategori ?></td>
                             <td><?php echo $row->id_lokasi ?></td>
