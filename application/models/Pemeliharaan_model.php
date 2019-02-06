@@ -35,6 +35,17 @@ class Pemeliharaan_model extends CI_Model {
         $this->db->where('id',$id);
         $this->db->update('pemeliharaan',$set);
     }
+    public function updatePemeliharaan($id)
+    {
+        $object = array('keterangan' => $this->input->post('keterangan'),
+                        'id_aset' => $this->input->post('id_aset'),
+                        'id_hari' => $this->input->post('id_hari'),
+                        'hasil_pemeliharaan' => $this->input->post('hasil_pemeliharaan'),
+                        'no_pemeliharaan' => $this->input->post('no_pemeliharaan'),
+                        'tanggal_pemeliharaan' => $this->input->post('tanggal_pemeliharaan')
+					);
+        $this->db->update('pemeliharaan', $object, array('id' => $id));
+	}
     public function delete($id)
     {
         $this->db->where('id',$id);
@@ -62,6 +73,12 @@ class Pemeliharaan_model extends CI_Model {
             return $data;
         }      
     }
+    public function getPemeliharaan($id)
+	{ 
+		$this->db->where('id',$id);
+		$query = $this->db->get('pemeliharaan');
+		return $query->result_array();
+	}
     function getPemeliharaanAll(){
         $this->db->select("`a`.`id` AS `id_aset`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode_aset` AS `kode_aset`,`a`.`nilai_aset` AS `nilai_aset`,`a`.`tgl_terima` AS `tgl_terima`,`a`.`masa_pemakaian` AS `masa_pemakaian`,`a`.`kondisi_awal` AS `kondisi_awal`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`,`p`.`id` AS `id`,`p`.`hasil_pemeliharaan` AS `hasil_pemeliharaan`,`p`.`tanggal_pemeliharaan` AS `tanggal_pemeliharaan`,`h`.`nama_hari` AS `nama_hari`,`p`.`no_pemeliharaan` AS `no_pemeliharaan`,`p`.`keterangan` AS `keterangan`");
         $this->db->where("((`p`.`id_aset` = `a`.`id`) and(`p`.`id_hari` = `h`.`id`) and(`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`))");

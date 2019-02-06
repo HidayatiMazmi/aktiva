@@ -28,7 +28,7 @@ class Pemeliharaan extends CI_Controller {
                 ];
         $id = $data['id'];
         $data['user2'] = $this->User_model->selectAll($id);
-		$data['Pemeliharaan'] = $this->Pemeliharaan_model->select();
+		$data['Pemeliharaan'] = $this->Pemeliharaan_model->getPemeliharaanAll();
 		
 		$this->load->view('admin/Pemeliharaan/index',$data);
 			}
@@ -59,10 +59,17 @@ class Pemeliharaan extends CI_Controller {
         $data['id']=$session_data['id'];
 		$id = $data ['id'];
 		$data['user2'] = $this->User_model->selectAll($id);
+		$data["aset"] = $this->Pemeliharaan_model->getAset();
+        $data["hari"] = $this->Pemeliharaan_model->getHari();
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('Hasil_pemeliharaan','hasil',"required");
+		$this->form_validation->set_rules('no_pemeliharaan', 'no pemeliharaan', 'trim|required');
+		$this->form_validation->set_rules('hasil_pemeliharaan', 'hasil pemeliharaan', 'trim|required');
+		$this->form_validation->set_rules('tanggal_pemeliharaan', 'tanggal pemeliharaan', 'trim|required');
+		$this->form_validation->set_rules('id_aset', 'aset', 'trim|required');
+		$this->form_validation->set_rules('id_hari', 'hari', 'trim|required');
+		$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
 		if ($this->form_validation->run() == false) {
-			$this->load->view('admin/Pemeliharaan/create',$data);
+			$this->load->view('admin/pemeliharaan/create',$data);
 		}else{
 			$this->Pemeliharaan_model->insert();
 			redirect('Pemeliharaan');
@@ -76,10 +83,17 @@ class Pemeliharaan extends CI_Controller {
         $data['id']=$session_data['id'];
 		$id_user = $data ['id'];
 		$data['user2'] = $this->User_model->selectAll($id_user);
+		$data['pemeliharaan'] = $this->Pemeliharaan_model->getPemeliharaan($id);
+		$data["aset"] = $this->Pemeliharaan_model->getAset();
+		$data["hari"] = $this->Pemeliharaan_model->getHari();
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('Hasil_pemeliharaan','Nama',"required");
+		$this->form_validation->set_rules('no_pemeliharaan', 'no pemeliharaan', 'trim|required');
+		$this->form_validation->set_rules('hasil_pemeliharaan', 'hasil pemeliharaan', 'trim|required');
+		$this->form_validation->set_rules('tanggal_pemeliharaan', 'tanggal pemeliharaan', 'trim|required');
+		$this->form_validation->set_rules('id_aset', 'aset', 'trim|required');
+		$this->form_validation->set_rules('id_hari', 'hari', 'trim|required');
+		$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
 		if ($this->form_validation->run() == false) {
-			$data['Pemeliharaan'] = $this->Pemeliharaan_model->select_id($id);
 			$this->load->view('admin/pemeliharaan/edit',$data);
 		}else{
 			$this->Pemeliharaan_model->update($id);
@@ -90,5 +104,21 @@ class Pemeliharaan extends CI_Controller {
 	{
 		$this->Pemeliharaan_model->delete($id);
 		redirect('Pemeliharaan');
+	}
+	public function downloadLaporan() {
+		$this->load->library('pdf');
+		$session_data=$this->session->userdata('logged_in');
+		$data = [
+			'results' => $this->Pemeliharaan_model->getPemeliharaanAll(),
+			'username' => $session_data['username'],
+			'role' => $session_data['role'],
+			'id' => $session_data['id'],
+		];
+		$id = $data['id'];
+		$data['user'] = $this->User_model->selectAll($id);
+		$data['pemeliharaan'] = $this->Pemeliharaan_model->getPemeliharaanAll();
+		$title='Laporan Pemeliharaan Aset PG. Kebon Agung.pdf';
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->load_view('user/pemeliharaan/cetak_laporan', $data,$title);
 	}
 }

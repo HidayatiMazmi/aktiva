@@ -12,7 +12,7 @@
           <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                <?php echo form_open_multipart(''); ?>
+                <?php echo form_open_multipart('asset/tambah'); ?>
                   <?php echo validation_errors(); ?>
                     <div class="form-group">
                       <label for="nama_aset">Nama Aset</label>
@@ -39,7 +39,7 @@
                       <div class="input-group col-xs-12">
                         <span class="input-group-append">
                           <input type="file" class="file-upload-browse btn btn-info" 
-                          id="photo" name="photo" placeholder="Masukkan Foto">
+                          id="foto_fisik_aset" name="foto_fisik_aset" placeholder="Masukkan Foto">
                         </span>
                       </div>
                     </div>
@@ -56,16 +56,31 @@
                       <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan">
                     </div>
                     <div class="form-group">
-                      <label for="keterangan">ID Jenis</label>
-                      <input type="text" class="form-control" id="id_jenis" name="id_jenis" placeholder="Masukkan ID Jenis">
+                      <label>Kategori Aset</label>
+                        <select name="id_kategori" class="form-control" placeholder="Pilih Kategori">
+                          <option value="" selected="selected">Pilih Kategori</option>
+                          <?php foreach($kategori as $k) { ?>
+                            <option value="<?php echo $k['id']; ?>"><?php echo $k['nama_kategori']; ?></option>
+                          <?php } ?>
+                        </select>
                     </div>
                     <div class="form-group">
-                      <label for="keterangan">ID Kategori</label>
-                      <input type="text" class="form-control" id="id_kategori" name="id_kategori" placeholder="Masukkan ID Kategori">
+                      <label>Jenis Aset</label>
+                        <select name="id_jenis" class="form-control" placeholder="Pilih Jenis">
+                          <option value="" selected="selected">Pilih Jenis</option>
+                          <?php foreach($jenis_asset as $j) { ?>
+                            <option value="<?php echo $j['id']; ?>"><?php echo $j['nama_jenis']; ?></option>
+                          <?php } ?>
+                        </select>
                     </div>
                     <div class="form-group">
-                      <label for="keterangan">ID Lokasi</label>
-                      <input type="text" class="form-control" id="id_lokasi" name="id_lokasi" placeholder="Masukkan ID Lokasi">
+                      <label class="col-sm-3 col-form-label">Lokasi Aset</label>
+                        <select name="id_lokasi" class="form-control" placeholder="Pilih Lokasi">
+                          <option value="" selected="selected">Pilih Lokasi</option>
+                          <?php foreach($lokasi as $l) { ?>
+                            <option value="<?php echo $l['id']; ?>"><?php echo $l['nama_lokasi']; ?></option>
+                          <?php } ?>
+                        </select>
                     </div>
                       <a class="btn btn-info" href="<?php echo site_url('Asset/') ?>">Kembali</a>
                       <button type="submit" class="btn btn-primary">OK</button>

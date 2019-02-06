@@ -5,10 +5,10 @@
 <head>
 	<title>LAPORAN ASET</title>
 	<style type="text/css">
-		@font-face {font-family: 'Open Sans';font-style: normal;font-weight: 300;src: local('Open Sans Light'), local('OpenSans-Light');}
-		@font-face {font-family: 'Open Sans';font-style: normal;font-weight: 400;src: local('Open Sans'), local('OpenSans');}
-		@font-face {font-family: 'Open Sans';font-style: normal;font-weight: 600;src: local('Open Sans Semibold'), local('OpenSans-Semibold');}
-		@font-face {font-family: 'Open Sans';font-style: normal;font-weight: 700;src: local('Open Sans Bold'), local('OpenSans-Bold');}
+		@font-face {font-family: 'Open Sans';font-style: small;font-weight: 300;src: local('Open Sans Light'), local('OpenSans-Light');}
+		@font-face {font-family: 'Open Sans';font-style: small;font-weight: 400;src: local('Open Sans'), local('OpenSans');}
+		@font-face {font-family: 'Open Sans';font-style: small;font-weight: 600;src: local('Open Sans Semibold'), local('OpenSans-Semibold');}
+		@font-face {font-family: 'Open Sans';font-style: small;font-weight: 700;src: local('Open Sans Bold'), local('OpenSans-Bold');}
 	</style>
 	<link rel="shortcut icon" href="<?php echo base_url('assets/img/ico/logopgbesar.png');?>">
 </head>
@@ -16,11 +16,11 @@
 <table border="0"  style="width:100%">
     <tbody>
         <tr>
-		<td align="left" width="12%"><img src="<?php echo base_url('assets/img/ico/logopgbesar.png');?>" width="100" height="100" alt="Logo PG. Kebon Agung" title="Logo PG. Kebon Agung"></td>
+            <td align="left" width="12%"><img src="<?php echo base_url('assets/img/ico/korp1.png');?>" width="100" height="100" alt="Logo PG. Kebon Agung" title="Logo PG. Kebon Agung"></td>
             <td align="center" width="88%" colspan="2">
+			
             <div>
-              <div style="font-size:20px">PT KEBON AGUNG</div>
-              <div style="font-size:25px">PABRIK GULA KEBON AGUNG</span></div>
+			        <div><img src="<?php echo base_url('assets/img/ico/korp2.jpg');?>" width="500" height="80" alt="Logo PG. Kebon Agung" title="Logo PG. Kebon Agung"></div>
               <div style="font-size:15px">Kotak Pos 80 Telp. (0341) 801371 - 801064 Fax. (0314) 801143 - Malang 65102</div>
             </div>
             </td>
@@ -36,14 +36,14 @@
     <table border="1" class="TableFormulir" style="width:100%">
                       <thead>
                         <tr>
-                          <th style="text-align: center;">No</th>
-                          <th style="text-align: center;">Nama Aset</th>
-                          <th style="text-align: center;">Kode Aset</th>
-                          <th style="text-align: center;">Jenis Aset</th>
-                          <th style="text-align: center;">Kategori Aset</th>
-                          <th style="text-align: center;">Tanggal Terima</th>
-                          <th style="text-align: center;">Masa Pemakaian</th>
-                          <th style="text-align: center;">Kondisi Aset</th>
+                          <th style="text-align: center; font-size:10px;">No</th>
+                          <th style="text-align: center; font-size:10px;">Nama Aset</th>
+                          <th style="text-align: center; font-size:10px;">Kode Aset</th>
+                          <th style="text-align: center; font-size:10px;">Jenis Aset</th>
+                          <th style="text-align: center; font-size:10px;">Kategori Aset</th>
+                          <th style="text-align: center; font-size:10px;">Tanggal Terima</th>
+                          <th style="text-align: center; font-size:10px;">Masa Pemakaian</th>
+                          <th style="text-align: center; font-size:10px;">Kondisi Aset</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -64,14 +64,14 @@
                         <?php foreach($results as $row) { 
                           ?>
                         <tr>
-                          <td><?php echo $i++; ?></td>
-                          <td><?php echo $row->nama_aset; ?></td>
-                          <td><?php echo $row->kode_aset; ?></td>
-                          <td><?php echo $row->nama_jenis; ?></td>
-                          <td><?php echo $row->nama_kategori; ?></td>
-                          <td><?php echo $row->tgl_terima; ?></td>
-                          <td><?php echo $row->masa_pemakaian; ?></td>
-                          <td><?php echo $row->kondisi_awal; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $i++; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->nama_aset; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->kode_aset; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->nama_jenis; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->nama_kategori; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->tgl_terima; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->masa_pemakaian; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->kondisi_awal; ?></td>
                         </tr>
                         <?php } ?>
                         <?php } else { ?>

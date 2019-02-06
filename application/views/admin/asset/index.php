@@ -46,7 +46,7 @@
                             <td><?php echo $row->tgl_terima ?></td>
                             <td><?php echo $row->masa_pemakaian ?></td>
                             <td>
-                            <img src="<?php echo base_url('assets/images/faces/'.$row->foto_fisik_aset)?>" width="100">
+                            <img src="<?php echo base_url('assets/img/aset/'.$row->foto_fisik_aset)?>" width="100">
                             </td>
                             <td><?php echo $row->kondisi_awal ?></td>
                             <td><?php echo $row->nilai_aset ?></td>
@@ -65,6 +65,9 @@
                       <?php } ?>
                       </tbody>
                     </table>
+                    <div class="col-md-2-right">
+                        <a href="<?php echo base_url(); ?>asset/downloadLaporan/" class="btn btn-primary btn-sm">Download Laporan Aset<i class="mdi mdi-printer"></i></a>
+                      </div>
                   </div>
                 </div>
               </div>

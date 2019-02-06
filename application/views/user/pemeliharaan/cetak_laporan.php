@@ -16,11 +16,11 @@
 <table border="0"  style="width:100%">
     <tbody>
         <tr>
-            <td align="left" width="12%"><img src="<?php echo base_url('assets/img/ico/logopgbesar.png');?>" width="100" height="100" alt="Logo PG. Kebon Agung" title="Logo PG. Kebon Agung"></td>
+			<td align="left" width="12%"><img src="<?php echo base_url('assets/img/ico/korp1.png');?>" width="100" height="100" alt="Logo PG. Kebon Agung" title="Logo PG. Kebon Agung"></td>
             <td align="center" width="88%" colspan="2">
+			
             <div>
-			  <div style="font-size:20px">PT KEBON AGUNG</div>
-              <div style="font-size:25px">PABRIK GULA KEBON AGUNG</span></div>
+			        <div><img src="<?php echo base_url('assets/img/ico/korp2.jpg');?>" width="500" height="80" alt="Logo PG. Kebon Agung" title="Logo PG. Kebon Agung"></div>
               <div style="font-size:15px">Kotak Pos 80 Telp. (0341) 801371 - 801064 Fax. (0314) 801143 - Malang 65102</div>
             </div>
             </td>
@@ -36,41 +36,43 @@
 	</tr>
 </table>
 	<?php if (isset($results)) { 
-		$i=1; ?>
+		$y=1;?>
 	<?php foreach($results as $row) { ?>
-<table border="0" class="TableFormulir" style="width:100%">
+<table border="0" class="TableFormulir" style="width:30%">
     <tr>
-    	<td style="width: 100px">Kode Aset</td>
-    	<td style="width: 5px">:</td>
-    	<td><?php echo $row->kode_aset; ?></td>
+		<td style="font-size:12px;"><?php echo $y++; ?>.</td>
+    	<td style="font-size:12px;">Kode Aset</td>
+    	<td style="font-size:12px;">:</td>
+    	<td style="font-size:12px;"><?php echo $row->kode_aset; $i=1; ?></td>
     </tr>
     <tr>
-    	<td>Nama Aset</td>
-    	<td>:</td>
-    	<td><?php echo $row->nama_aset; ?></td>
+		<td style="font-size:12px;"></td>
+    	<td style="font-size:12px;">Nama Aset</td>
+    	<td style="font-size:12px;">:</td>
+    	<td style="font-size:12px;"><?php echo $row->nama_aset; ?></td>
     </tr>
 </table>
 <br>
     <table border="1"  style="width:100%">
                       <thead>
                         <tr>
-						  <th style="text-align: center;">No</th>
-						  <th style="text-align: center;">No Pemeliharaan</th>
-                          <th style="text-align: center;">Tanggal Pemeliharaan</th>
-                          <th style="text-align: center;">Hasil Pemeliharaan</th>
-						  <th style="text-align: center;">Hari Pemeliharaan</th>
-						  <th style="text-align: center;">Keterangan</th>
+						  <th style="text-align: center; font-size:10px;">No</th>
+						  <th style="text-align: center; font-size:10px;">No Pemeliharaan</th>
+                          <th style="text-align: center; font-size:10px;">Tanggal Pemeliharaan</th>
+                          <th style="text-align: center; font-size:10px;">Hasil Pemeliharaan</th>
+						  <th style="text-align: center; font-size:10px;">Hari Pemeliharaan</th>
+						  <th style="text-align: center; font-size:10px;">Keterangan</th>
                         </tr>
                       </thead>
                       
                       <tbody>
                         <tr>
-						  <td style="text-align: center;"><?php echo $i++; ?></td>
-						  <td style="text-align: center;"><?php echo $row->no_pemeliharaan; ?></td>
-                          <td style="text-align: center;"><?php echo $row->tanggal_pemeliharaan; ?></td>
-                          <td style="text-align: center;"><?php echo $row->hasil_pemeliharaan; ?></td>
-						  <td style="text-align: center;"><?php echo $row->nama_hari; ?></td>
-						  <td style="text-align: center;"><?php echo $row->keterangan; ?></td>
+						  <td style="text-align: center; font-size:10px;"><?php echo $i++; ?></td>
+						  <td style="text-align: center; font-size:10px;"><?php echo $row->no_pemeliharaan; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->tanggal_pemeliharaan; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->hasil_pemeliharaan; ?></td>
+						  <td style="text-align: center; font-size:10px;"><?php echo $row->nama_hari; ?></td>
+						  <td style="text-align: center; font-size:10px;"><?php echo $row->keterangan; ?></td>
                         </tr>
                       </tbody>                      
 					</table>

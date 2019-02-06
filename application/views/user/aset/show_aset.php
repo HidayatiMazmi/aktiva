@@ -95,7 +95,7 @@
                       </tbody>                      
                     </table>
                       <div class="col-md-2">
-                      <button type="button" class="btn btn-primary btn-sm">Download</button>
+                      <a href="<?php echo base_url("aset/downloadLaporanPerAset/".$aset->id); ?>" class="btn btn-primary btn-sm">Download Laporan Aset<i class="mdi mdi-printer"></i></a>
                       </div>
                     </div>
                   </form>

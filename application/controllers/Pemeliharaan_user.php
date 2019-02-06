@@ -62,6 +62,7 @@ class Pemeliharaan_user extends CI_Controller {
 		$this->form_validation->set_rules('tanggal_pemeliharaan', 'tanggal pemeliharaan', 'trim|required');
 		$this->form_validation->set_rules('id_aset', 'aset', 'trim|required');
 		$this->form_validation->set_rules('id_hari', 'hari', 'trim|required');
+		$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
 		if ($this->form_validation->run()==FALSE){
 			$this->load->view('user/pemeliharaan/create_new_jadwal',$data);
 		}else{
@@ -93,49 +94,23 @@ class Pemeliharaan_user extends CI_Controller {
 		$data['user'] = $this->User_model->selectAll($id_user);
 		$this->load->helper('url','form');
         $this->load->library('form_validation');		
-		$data['aset'] = $this->Aset_model->getAset($id);
-		$data["kategori"] = $this->Aset_model->getKatAset();
-		$data["jenis_asset"] = $this->Aset_model->getJenisAset();
-		$data["lokasi"] = $this->Aset_model->getLokAset();
-		//$data['pemeliharaan'] = $this->Aset_model->getAsetPemeliharaan();
+		$data['pemeliharaan'] = $this->Pemeliharaan_model->getPemeliharaan($id);
+		$data["aset"] = $this->Pemeliharaan_model->getAset();
+		$data["hari"] = $this->Pemeliharaan_model->getHari();
 		
-		$this->form_validation->set_rules('nama_aset', 'nama aset', 'trim|required');
-		$this->form_validation->set_rules('kode_aset', 'kode aset', 'trim|required');
-		$this->form_validation->set_rules('tgl_terima', 'tanggal terima', 'trim|required');
-		$this->form_validation->set_rules('masa_pemakaian', 'masa pemakaian', 'trim|required');
-		$this->form_validation->set_rules('kondisi_awal', 'kondisi awal', 'trim|required');
-		$this->form_validation->set_rules('nilai_aset', 'nilai aset', 'trim|required');
-		$this->form_validation->set_rules('jumlah_barang', 'jumlah_barang', 'trim|required');
-		$this->form_validation->set_rules('id_kategori', 'kategori aset', 'trim|required');
-		$this->form_validation->set_rules('id_jenis', 'jenis aset', 'trim|required');
-		$this->form_validation->set_rules('id_lokasi', 'lokasi aset', 'trim|required');
-		
-		//$this->tgl_lahir=date('Y-m-d', strtotime($this->tgl_lahir));
-		$config['upload_path']='./assets/img/aset/';
-            $config['allowed_types']='gif|jpg|jpeg|png';
-            $config['max_size']=1000000000;
-            $config['max_width']=10240;
-            $config['max_height']=7680;
-			
-			$this->load->library('upload');
-			$this->upload->initialize($config);
+		$this->form_validation->set_rules('no_pemeliharaan', 'no pemeliharaan', 'trim|required');
+		$this->form_validation->set_rules('hasil_pemeliharaan', 'hasil pemeliharaan', 'trim|required');
+		$this->form_validation->set_rules('tanggal_pemeliharaan', 'tanggal pemeliharaan', 'trim|required');
+		$this->form_validation->set_rules('id_aset', 'aset', 'trim|required');
+		$this->form_validation->set_rules('id_hari', 'hari', 'trim|required');
+		$this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
 		if ($this->form_validation->run()==FALSE){
 			$this->load->view('user/pemeliharaan/edit_jadwal',$data);
 		}else{
-			if(isset($_FILES['foto_fisik_aset']['name']) && $_FILES['foto_fisik_aset']['name'] != '') {
-				if (! $this->upload->do_upload('foto_fisik_aset')) {
-					$error = array('error' => $this->upload->display_errors());
-					$this->load->view('user/pemeliharaan/edit_jadwal',$data);
-				} else {
-					$this->Aset_model->updateAsetWithImage($id);
-					echo "<script>alert('Successfully Updated'); </script>";
-					redirect('master', 'refresh');
-				}
-			} else {
-				$this->Aset_model->updateAset($id);
+				$this->Pemeliharaan_model->updatePemeliharaan($id);
 				echo "<script>alert('Successfully Updated'); </script>";
-				redirect('master', 'refresh');
-			}
+				redirect('pemeliharaan_user', 'refresh');
+			
 		}
 	}
 

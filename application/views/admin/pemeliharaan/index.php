@@ -36,8 +36,8 @@
                                     <td><?php echo $number++; ?></td>
                                     <td><?php echo $row->hasil_pemeliharaan ?></td>
                                     <td><?php echo $row->tanggal_pemeliharaan ?></td>
-                                    <td><?php echo $row->id_aset ?></td>
-                                    <td><?php echo $row->id_hari ?></td>
+                                    <td><?php echo $row->nama_aset ?></td>
+                                    <td><?php echo $row->nama_hari ?></td>
                                     <td><?php echo form_open('Pemeliharaan/destroy/'.$row->id); ?><a class="btn btn-info" href="<?php echo site_url('Pemeliharaan/edit/'.$row->id) ?>">Ubah</a>
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah anda yakin?')">Hapus</button>
                                     <?php echo form_close() ?>
@@ -46,6 +46,9 @@
                             <?php } ?>
                             </tbody>
                         </table>
+                        <div class="col-md-2-right">
+                        <a href="<?php echo base_url(); ?>pemeliharaan/downloadLaporan/" class="btn btn-primary btn-sm">Download Laporan Pemeliharaan<i class="mdi mdi-printer"></i></a>
+                      </div>
                     </div>
                 </div>
               </div>

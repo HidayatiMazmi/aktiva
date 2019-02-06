@@ -12,23 +12,41 @@
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <?php echo form_open_multipart(''); ?>
+              <?php echo form_open_multipart('pemeliharaan/create'); ?>
               <?php echo validation_errors(); ?>
               <div class="form-group">
-                <label for="nama">Pemeliharaan</label>
+                <label for="nama">No Pemeliharaan</label>
+                <input type="text" class="form-control" id="no_pemeliharaan" name="no_pemeliharaan" placeholder="Masukkan No Pemeliharaan">
+              </div>
+              <div class="form-group">
+                <label for="nama">Hasil Pemeliharaan</label>
                 <input type="text" class="form-control" id="pemeliharaan" name="hasil_pemeliharaan" placeholder="Masukkan Hasil Pemeliharaan">
               </div>
               <div class="form-group">
                 <label for="nama">Tanggal Pemeliharaan</label>
-                <input type="text" class="form-control" id="datepicker" name="datepicker" placeholder="Masukkan Tgl Pemeliharaan">
+                <input type="date" class="form-control" id="tanggal_pemeliharaan" name="tanggal_pemeliharaan" placeholder="Masukkan Tgl Pemeliharaan">
               </div>
               <div class="form-group">
-                <label for="nama">ID Aset</label>
-                <input type="text" class="form-control" id="id_aset" name="id_aset" placeholder="Masukkan ID Aset">
+                  <label class="col-sm-3 col-form-label">Kode Aset</label>
+                    <select name="id_aset" class="form-control" placeholder="Pilih Kode Aset">
+                      <option value="" selected="selected">Pilih Kode Aset</option>
+                      <?php foreach($aset as $a) { ?>
+                        <option value="<?php echo $a['id']; ?>"><?php echo $a['kode_aset']; ?></option>
+                      <?php } ?>
+                    </select>
               </div>
               <div class="form-group">
-                <label for="nama">Hari</label>
-                <input type="text" class="form-control" id="id_hari" name="id_hari" placeholder="Masukkan ID Hari">
+                  <label class="col-sm-3 col-form-label">Hari</label>
+                    <select name="id_hari" class="form-control" placeholder="Pilih Hari">
+                      <option value="" selected="selected">Pilih Hari</option>
+                      <?php foreach($hari as $h) { ?>
+                        <option value="<?php echo $h['id']; ?>"><?php echo $h['nama_hari']; ?></option>
+                      <?php } ?>
+                    </select>
+              </div>
+              <div class="form-group">
+                <label for="nama">Keterangan</label>
+                <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan">
               </div>
                 <a class="btn btn-info" href="<?php echo site_url('pemeliharaan/') ?>">Kembali</a>
                 <button type="submit" class="btn btn-primary">OK</button>

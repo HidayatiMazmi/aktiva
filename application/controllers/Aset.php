@@ -168,7 +168,7 @@ class Aset extends CI_Controller {
 				$data["jenis_asset"] = $this->Aset_model->getJenisAset();
 				$id = $data['id'];
 				$data['user'] = $this->User_model->selectAll($id);
-				$this->load->view('user/master', $data);
+				$this->load->view('user/aset/index', $data);
 			}
 		}
 		else{
@@ -198,7 +198,7 @@ class Aset extends CI_Controller {
 		$id = $data['id'];
 		$data['user'] = $this->User_model->selectAll($id);
 		$title='Laporan Semua Aset PG. Kebon Agung.pdf';
-		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->setPaper('A4', 'portrait');
 		$this->pdf->load_view('user/aset/cetak_laporan', $data, $title);
 	}
 	public function downloadLaporanPerAset($id_aset) {
@@ -214,7 +214,7 @@ class Aset extends CI_Controller {
 		$title='Laporan Aset PG. Kebon Agung.pdf';
 		$data['user'] = $this->User_model->selectAll($id);
 		$data['aset'] = $this->Aset_model->show($id_aset);
-		$this->pdf->setPaper('A4', 'landscape');
-		$this->pdf->load_view('user/aset/show_aset', $data, $title);
+		$this->pdf->setPaper('A4', 'portrait');
+		$this->pdf->load_view('user/aset/cetak_per_aset', $data, $title);
 	}
 }
