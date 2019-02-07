@@ -188,4 +188,8 @@ class Pemeliharaan_user extends CI_Controller {
 		$this->pdf->setPaper('A4', 'landscape');
 		$this->pdf->load_view('user/pemeliharaan/cetak_laporan', $data,$title);
 	}
+
+	// public function cek() {
+		
+	// }
 }

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 07, 2019 at 02:36 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
+-- Host: 127.0.0.1
+-- Generation Time: Feb 07, 2019 at 01:43 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -75,18 +75,6 @@ INSERT INTO `aset` (`id`, `nama_aset`, `kode_aset`, `tgl_terima`, `masa_pemakaia
 (27, 'Meja Kursi Tunggu', 'PRT/871/67/19', '2012-02-01', '8 Tahun', '_1_.jpg', 'Baik', 25000000, '18  bh', '', 2, 1, 4, 3),
 (28, 'Meja Kursi Kerja', 'lp/01', '2012-02-01', '8 Tahun', '12.jpg', 'Baik', 70000000, '60 bh', '', 2, 1, 4, 9),
 (29, 'Kursi Tunggu', 'lp/01', '2012-02-01', '8 Tahun', '_1_1.jpg', 'Baik', 10000000, '1 bh', '', 2, 1, 4, 9);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `daftar_notifikasi`
---
-
-CREATE TABLE `daftar_notifikasi` (
-  `id_notifikasi` bigint(20) NOT NULL,
-  `tanggal_notifikasi` date NOT NULL,
-  `id_pemeliharaan` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -239,7 +227,7 @@ CREATE TABLE `pemeliharaan` (
 --
 
 INSERT INTO `pemeliharaan` (`id`, `hasil_pemeliharaan`, `id_aset`, `tanggal_pemeliharaan`, `id_hari`, `keterangan`, `no_pemeliharaan`) VALUES
-(1, 'Baik', 1, '2019-02-10', 1, 'test', '1');
+(1, 'Baik', 1, '2019-02-15', 1, 'test', '1');
 
 -- --------------------------------------------------------
 
@@ -280,12 +268,6 @@ ALTER TABLE `aset`
   ADD KEY `id_kategori` (`id_jenis`),
   ADD KEY `id_kategori_2` (`id_kategori`),
   ADD KEY `id_lokasi` (`id_lokasi`);
-
---
--- Indexes for table `daftar_notifikasi`
---
-ALTER TABLE `daftar_notifikasi`
-  ADD PRIMARY KEY (`id_notifikasi`);
 
 --
 -- Indexes for table `events`
@@ -341,12 +323,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `aset`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
-
---
--- AUTO_INCREMENT for table `daftar_notifikasi`
---
-ALTER TABLE `daftar_notifikasi`
-  MODIFY `id_notifikasi` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `events`

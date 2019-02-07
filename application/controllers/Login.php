@@ -6,6 +6,33 @@
     
         public function index()
         {
+            // Cek dan kirim notifikasi setiap membuka halaman login
+            $semua_pemeliharaan = $this->db->get('pemeliharaan')->result_array();
+            $numberDays = 0;
+
+            foreach($semua_pemeliharaan as $pemeliharaan) {
+                $now = date('Y-m-d', time());
+
+                $startTimeStamp = strtotime($now);
+                $endTimeStamp = strtotime($pemeliharaan['tanggal_pemeliharaan']);
+
+                $timeDiff = abs($endTimeStamp - $startTimeStamp);
+
+                $numberDays = $timeDiff/86400;
+                $numberDays = intval($numberDays);
+
+                if($numberDays == 7 || $numberDays == 3) {
+                    $cek_notifikasi = $this->db->get_where('daftar_notifikasi', array('tanggal_notifikasi' => $now, 'id_pemeliharaan' => $pemeliharaan['id']))->result_array();
+
+                    if(count($cek_notifikasi) == 0) {
+                        send_email('PG. Kebon Agung Malang', 'forselemel4@gmail.com', 'fumukaba@gmail.com', $pemeliharaan['keterangan'], 'Jadwal pemeliharaan dalam ' . $pemeliharaan['keterangan'] . ' sisa ' . $numberDays . ' hari lagi.');
+
+                        $this->db->insert('daftar_notifikasi', array('tanggal_notifikasi' => $now, 'id_pemeliharaan' => $pemeliharaan['id']));
+                    }
+                }
+            }
+            // End
+        
             $data['title'] = 'Login';
             $this->load->view('user/login', $data);
         }
@@ -60,6 +87,10 @@
                 }
             }
         }
+
+        // public function kirim() {
+            
+        // }
     }
     
     /* End of file Controllername.php */
