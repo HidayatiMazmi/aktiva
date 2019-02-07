@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Jan 2019 pada 08.22
--- Versi server: 10.1.36-MariaDB
--- Versi PHP: 7.2.11
+-- Generation Time: Feb 07, 2019 at 04:48 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `aset`
+-- Table structure for table `aset`
 --
 
 CREATE TABLE `aset` (
@@ -36,9 +36,8 @@ CREATE TABLE `aset` (
   `masa_pemakaian` varchar(50) NOT NULL,
   `foto_fisik_aset` varchar(1000) NOT NULL,
   `kondisi_awal` varchar(100) NOT NULL,
-  `kondisi_aset_sekarang` varchar(20) NOT NULL,
   `nilai_aset` int(20) NOT NULL,
-  `jumlah_barang` int(10) NOT NULL,
+  `jumlah_barang` varchar(10) NOT NULL,
   `keterangan` varchar(1000) NOT NULL,
   `id_user` int(11) UNSIGNED NOT NULL,
   `id_jenis` int(11) UNSIGNED NOT NULL,
@@ -47,19 +46,40 @@ CREATE TABLE `aset` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `aset`
+-- Dumping data for table `aset`
 --
 
-INSERT INTO `aset` (`id`, `nama_aset`, `kode_aset`, `tgl_terima`, `masa_pemakaian`, `foto_fisik_aset`, `kondisi_awal`, `kondisi_aset_sekarang`, `nilai_aset`, `jumlah_barang`, `keterangan`, `id_user`, `id_jenis`, `id_kategori`, `id_lokasi`) VALUES
-(1, 'komputer', 'A01', '2018-05-03', '2 tahun', 'default.png', 'Baik', '', 4000000, 0, '', 1, 1, 1, 2),
-(2, 'Meja', 'A02', '2017-01-02', '2 tahun', 'default.png', 'Baik', '', 100000, 0, '', 2, 2, 2, 2),
-(5, 'kursi', 'k/tuk/2001', '2019-01-10', '10 tahun', 'mappin@2x3.png', 'Baik', 'Baik', 400000, 30, '', 2, 1, 1, 3),
-(6, 'Komputer', 'kom', '2019-01-30', '10 tahun', 'LAN-2.png', 'Baik', 'Baik', 400000, 30, '', 2, 1, 1, 2);
+INSERT INTO `aset` (`id`, `nama_aset`, `kode_aset`, `tgl_terima`, `masa_pemakaian`, `foto_fisik_aset`, `kondisi_awal`, `nilai_aset`, `jumlah_barang`, `keterangan`, `id_user`, `id_jenis`, `id_kategori`, `id_lokasi`) VALUES
+(1, 'komputer', 'A01', '2012-02-01', '8 Tahun', 'default.png', 'Baik', 4000000, '0', '', 1, 1, 1, 2),
+(2, 'Meja', 'A02', '2017-01-02', '2 tahun', 'default.png', 'Baik', 100000, '0', '', 2, 2, 2, 2),
+(7, 'Print', 'PRT/871/67/90', '2012-02-01', '2 Tahun', 'print1.jpg', 'Baik', 235, '5', '', 2, 1, 1, 1),
+(8, 'Meja Kerja', 'mj', '2012-02-01', '10', 'desk2.jpg', 'Baik', 5000, '1 set', '', 2, 1, 4, 2),
+(9, 'Meja Komputer', 'mj/kmp', '0000-00-00', '2 Tahun', 'desk11.jpg', 'baik', 5000, '1 set', '', 2, 1, 4, 2),
+(10, 'Meja Rapat', 'mj/rp', '2012-02-01', '10 Tahun', 'desk3.jpg', 'Baik', 35000000, '14 bh', '', 2, 1, 4, 2),
+(11, 'Sofa, meja', 'SFMJ', '2012-02-01', '10 Tahun', 'sofameja_tamu_1516629125_9f59f5fe.jpg', 'Baik', 15000, '3 set', '', 2, 1, 4, 2),
+(12, 'TV', 'TV/01', '2012-02-01', '10 Tahun', 'TV.jpg', 'Baik', 10000, '1 bh', '', 2, 1, 4, 2),
+(13, 'Kulkas Kecil', 'klk/01', '2012-02-01', '10 Tahun', 'klks.jpg', 'Baik', 2000, '1 bh', '', 2, 1, 4, 2),
+(14, 'Almari Kaca', 'AK/01', '2012-02-01', '8 Tahun', 'ak.jpg', 'Baik', 5000000, '1 bh', '', 2, 1, 4, 2),
+(15, 'Meja Kerja', 'mk/kbag/tuk/t/01', '2012-02-01', '8 Tahun', 'desk12.jpg', 'Baik', 6000000, '2 set', '', 2, 1, 4, 9),
+(16, 'Meja Komputer', 'mk/kbag/tuk/t/02', '2012-02-01', '8 Tahun', 'desk21.jpg', 'Baik', 3000, '2 set', '', 2, 1, 4, 9),
+(17, 'Almari Arsip', 'mk/kbag/tuk/t/03', '2012-02-01', '8 Tahun', 'al2.jpg', 'Baik', 14000000, '4 bh', '', 2, 1, 4, 3),
+(18, 'Kulkas Kecil', 'kk/tuk/tan/01', '2012-02-01', '8 Tahun', 'klks1.jpg', 'Baik', 4000000, '2 bh', '', 2, 1, 4, 3),
+(19, 'Meja Kursi Rapat', 'MKR/01', '2012-02-01', '8 Tahun', 'desk31.jpg', 'Baik', 17000000, '34 bh', '', 2, 1, 4, 29),
+(20, 'Meja Kursi Rapat', 'MKR/02', '2012-02-01', '8 Tahun', 'desk32.jpg', 'Baik', 150000000, '60 bh', '', 2, 1, 4, 30),
+(21, 'Sound System', 'SS/01', '2012-02-01', '8 Tahun', 'ss.jpg', 'Baik', 10000000, '1 set', '', 2, 1, 4, 30),
+(22, 'Layar proyektor', 'lp/01', '2012-02-01', '8 Tahun', 'TV1.jpg', 'Baik', 10000000, '1 set', '', 2, 1, 4, 30),
+(23, 'Meja Kursi Makan', 'mkm/01', '2012-02-01', '8 Tahun', 'mjm.jpg', 'Baik', 8000000, '4 set', '', 2, 1, 4, 27),
+(24, 'Kulkas', 'kk/tuk/tan/01', '2012-02-01', '8 Tahun', 'klks2.jpg', 'Baik', 2000000, '1 bh', '', 2, 1, 4, 27),
+(25, 'Meja Kursi kERJA', 'kk/tuk/tan/01', '2012-02-01', '8 Tahun', 'desk33.jpg', 'Baik', 40000000, '35 BH', '', 2, 1, 4, 3),
+(26, 'Sofa, meja', 'PRT/871/67/90', '2012-02-01', '8 Tahun', 'sofameja_tamu_1516629125_9f59f5fe1.jpg', 'Baik', 15000000, '4 set', '', 2, 1, 4, 3),
+(27, 'Meja Kursi Tunggu', 'PRT/871/67/19', '2012-02-01', '8 Tahun', '_1_.jpg', 'Baik', 25000000, '18  bh', '', 2, 1, 4, 3),
+(28, 'Meja Kursi Kerja', 'lp/01', '2012-02-01', '8 Tahun', '12.jpg', 'Baik', 70000000, '60 bh', '', 2, 1, 4, 9),
+(29, 'Kursi Tunggu', 'lp/01', '2012-02-01', '8 Tahun', '_1_1.jpg', 'Baik', 10000000, '1 bh', '', 2, 1, 4, 9);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `events`
+-- Table structure for table `events`
 --
 
 CREATE TABLE `events` (
@@ -72,7 +92,7 @@ CREATE TABLE `events` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `events`
+-- Dumping data for table `events`
 --
 
 INSERT INTO `events` (`id`, `nama`, `contact`, `tanggal_mulai`, `tanggal_berakhir`, `keterangan`) VALUES
@@ -82,7 +102,7 @@ INSERT INTO `events` (`id`, `nama`, `contact`, `tanggal_mulai`, `tanggal_berakhi
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `hari`
+-- Table structure for table `hari`
 --
 
 CREATE TABLE `hari` (
@@ -91,7 +111,7 @@ CREATE TABLE `hari` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `hari`
+-- Dumping data for table `hari`
 --
 
 INSERT INTO `hari` (`id`, `nama_hari`) VALUES
@@ -106,7 +126,7 @@ INSERT INTO `hari` (`id`, `nama_hari`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jenis_asset`
+-- Table structure for table `jenis_asset`
 --
 
 CREATE TABLE `jenis_asset` (
@@ -115,7 +135,7 @@ CREATE TABLE `jenis_asset` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `jenis_asset`
+-- Dumping data for table `jenis_asset`
 --
 
 INSERT INTO `jenis_asset` (`id`, `nama_jenis`) VALUES
@@ -125,7 +145,7 @@ INSERT INTO `jenis_asset` (`id`, `nama_jenis`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kategori`
+-- Table structure for table `kategori`
 --
 
 CREATE TABLE `kategori` (
@@ -135,18 +155,19 @@ CREATE TABLE `kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `kategori`
+-- Dumping data for table `kategori`
 --
 
 INSERT INTO `kategori` (`id`, `nama_kategori`, `id_detail`) VALUES
 (1, 'Perangkat Elektronik', 0),
 (2, 'Tanah', 0),
-(3, 'Kendaraan', 0);
+(3, 'Kendaraan', 0),
+(4, 'Peralatan', 0);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `lokasi`
+-- Table structure for table `lokasi`
 --
 
 CREATE TABLE `lokasi` (
@@ -156,22 +177,39 @@ CREATE TABLE `lokasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `lokasi`
+-- Dumping data for table `lokasi`
 --
 
 INSERT INTO `lokasi` (`id`, `nama_lokasi`, `alamat`) VALUES
-(1, 'Kantor Wilayah ', 'Blitar'),
-(2, 'R.Pemimpin', 'Kantor Pusat Malang'),
-(3, 'R. Kabag TUK/Tanaman', 'Kantor Pusat Malang'),
-(4, 'R.Rapat Kecil', 'Kantor Pusat Malang'),
-(5, 'R. Rapat Besar', 'Kantor Pusat Malang'),
-(6, 'R. Makan ', 'Kantor Pusat Malang'),
-(7, 'Kantor Tanaman', 'Kantor Pusat Malang');
+(1, 'KANTOR WILAYAH', 'Blitar'),
+(2, 'RUANG PEMIMPIN', 'Kantor Pusat Malang'),
+(3, 'RUANG KABAG TUK', 'Kantor Pusat Malang'),
+(8, 'RUANG PUSTAKA', ''),
+(9, 'RUANG KABAG TANAMAN', ''),
+(10, 'RUANG BIRO TANAMAN', ''),
+(11, 'RUANG YUDISTIRA', ''),
+(13, 'RUANG SEKRETARIAT', ''),
+(14, 'RUANG KRISNA', ''),
+(15, 'RUANG NAKULA-SADEWA', ''),
+(17, 'BINA WILAYAH UTARA', ''),
+(18, 'BINA WILAYAH SELATAN', ''),
+(19, 'BINA WILAYAH TENGAH', ''),
+(20, 'RUANG PANDAWA', ''),
+(21, 'SEKSI KEUANGAN', ''),
+(22, 'LOGISTIK', ''),
+(23, 'AKUNTANSI', ''),
+(24, 'KASIR DAN PELAYANAN DO', ''),
+(25, 'SEKSI PERSONALIA DAN UMUM', ''),
+(26, 'PERSONALIA DAN UMUM', ''),
+(27, 'RUMAH TANGGA', ''),
+(28, 'PDE', ''),
+(29, 'RUANG RAPAT KECIL', ''),
+(30, 'RUANG RAPAT BESAR', '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pemeliharaan`
+-- Table structure for table `pemeliharaan`
 --
 
 CREATE TABLE `pemeliharaan` (
@@ -180,20 +218,21 @@ CREATE TABLE `pemeliharaan` (
   `id_aset` int(11) UNSIGNED NOT NULL,
   `tanggal_pemeliharaan` date NOT NULL,
   `id_hari` int(11) UNSIGNED NOT NULL,
-  `keterangan` varchar(500) NOT NULL
+  `keterangan` varchar(500) NOT NULL,
+  `no_pemeliharaan` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pemeliharaan`
+-- Dumping data for table `pemeliharaan`
 --
 
-INSERT INTO `pemeliharaan` (`id`, `hasil_pemeliharaan`, `id_aset`, `tanggal_pemeliharaan`, `id_hari`, `keterangan`) VALUES
-(1, 'Baik', 1, '2019-01-10', 1, '');
+INSERT INTO `pemeliharaan` (`id`, `hasil_pemeliharaan`, `id_aset`, `tanggal_pemeliharaan`, `id_hari`, `keterangan`, `no_pemeliharaan`) VALUES
+(1, 'Baik', 1, '2019-01-10', 1, '', '');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -207,20 +246,21 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `nama`, `nip`, `role`, `photo`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '1', 'Admin', 'default.png'),
-(2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', '2', 'User', 'default.png'),
-(3, 'ida', 'ida', 'ida', '201002', 'User', 'logoMG_(2).png');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', '1', 'Admin', 'face123.jpg'),
+(2, 'user', 'ee11cbb19052e40b07aac0ca060c23ee', 'user', '2', 'User', 'face234.jpg'),
+(7, 'ida', '7f78f270e3e1129faf118ed92fdf54db', 'ida', '5476567444467690', 'Admin', 'face103.jpg'),
+(8, 'gg', '73c18c59a39b18382081ec00bb456d43', 'gg', '9767576565820876', 'User', 'face162.jpg');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `aset`
+-- Indexes for table `aset`
 --
 ALTER TABLE `aset`
   ADD PRIMARY KEY (`id`),
@@ -230,38 +270,38 @@ ALTER TABLE `aset`
   ADD KEY `id_lokasi` (`id_lokasi`);
 
 --
--- Indeks untuk tabel `events`
+-- Indexes for table `events`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `hari`
+-- Indexes for table `hari`
 --
 ALTER TABLE `hari`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `jenis_asset`
+-- Indexes for table `jenis_asset`
 --
 ALTER TABLE `jenis_asset`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `kategori`
+-- Indexes for table `kategori`
 --
 ALTER TABLE `kategori`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_detail` (`id_detail`);
 
 --
--- Indeks untuk tabel `lokasi`
+-- Indexes for table `lokasi`
 --
 ALTER TABLE `lokasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pemeliharaan`
+-- Indexes for table `pemeliharaan`
 --
 ALTER TABLE `pemeliharaan`
   ADD PRIMARY KEY (`id`),
@@ -269,69 +309,69 @@ ALTER TABLE `pemeliharaan`
   ADD KEY `id_hari` (`id_hari`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `aset`
+-- AUTO_INCREMENT for table `aset`
 --
 ALTER TABLE `aset`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT untuk tabel `events`
+-- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `hari`
+-- AUTO_INCREMENT for table `hari`
 --
 ALTER TABLE `hari`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT untuk tabel `jenis_asset`
+-- AUTO_INCREMENT for table `jenis_asset`
 --
 ALTER TABLE `jenis_asset`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `kategori`
+-- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `lokasi`
+-- AUTO_INCREMENT for table `lokasi`
 --
 ALTER TABLE `lokasi`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT untuk tabel `pemeliharaan`
+-- AUTO_INCREMENT for table `pemeliharaan`
 --
 ALTER TABLE `pemeliharaan`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `aset`
+-- Constraints for table `aset`
 --
 ALTER TABLE `aset`
   ADD CONSTRAINT `aset_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
@@ -340,7 +380,7 @@ ALTER TABLE `aset`
   ADD CONSTRAINT `aset_ibfk_4` FOREIGN KEY (`id_kategori`) REFERENCES `kategori` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `pemeliharaan`
+-- Constraints for table `pemeliharaan`
 --
 ALTER TABLE `pemeliharaan`
   ADD CONSTRAINT `pemeliharaan_ibfk_1` FOREIGN KEY (`id_hari`) REFERENCES `hari` (`id`),
