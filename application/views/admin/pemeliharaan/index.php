@@ -46,9 +46,9 @@
                             <?php } ?>
                             </tbody>
                         </table>
-                        <div class="col-md-2-right">
+                        <!-- <div class="col-md-2-right">
                         <a href="<?php echo base_url(); ?>pemeliharaan/downloadLaporan/" class="btn btn-primary btn-sm">Download Laporan Pemeliharaan<i class="mdi mdi-printer"></i></a>
-                      </div>
+                      </div> -->
                     </div>
                 </div>
               </div>

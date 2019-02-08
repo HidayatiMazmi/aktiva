@@ -15,7 +15,7 @@
               <div class="card">
                 <div class="card-body">
                     <?php echo form_open("Asset/search")?>
-                      <input class="form-control" type="text" name="search" value="" placeholder="Masukkan Nama User. . .">
+                      <input class="form-control" type="text" name="search" value="" placeholder="Masukkan Aset. . .">
                       <input type="submit" class="btn btn-primary" value="Search">
                       <a href="<?php echo site_url("Asset/index"); ?>" class="btn btn-primary">Show All</a>
                     <?php ?>
@@ -63,9 +63,9 @@
                       <?php } ?>
                       </tbody>
                     </table>
-                    <div class="col-md-2-right">
+                    <!-- <div class="col-md-2-right">
                         <a href="<?php echo base_url(); ?>asset/downloadLaporan/" class="btn btn-primary btn-sm">Download Laporan Aset<i class="mdi mdi-printer"></i></a>
-                      </div>
+                      </div> -->
                   </div>
                 </div>
               </div>
