@@ -41,9 +41,9 @@
 <table border="0" class="TableFormulir" style="width:30%">
     <tr>
 		<td style="font-size:12px;"><?php echo $y++; ?>.</td>
-    	<td style="font-size:12px;">Kode Aset</td>
+    	<td style="font-size:12px;">Kode</td>
     	<td style="font-size:12px;">:</td>
-    	<td style="font-size:12px;"><?php echo $row->kode_aset; $i=1; ?></td>
+    	<td style="font-size:12px;"><?php echo $row->kode; $i=1; ?></td>
     </tr>
     <tr>
 		<td style="font-size:12px;"></td>
@@ -61,6 +61,7 @@
                           <th style="text-align: center; font-size:10px;">Tanggal Pemeliharaan</th>
                           <th style="text-align: center; font-size:10px;">Hasil Pemeliharaan</th>
 						  <th style="text-align: center; font-size:10px;">Hari Pemeliharaan</th>
+							<th style="text-align: center; font-size:10px;">Harga Pemeliharaan</th>
 						  <th style="text-align: center; font-size:10px;">Keterangan</th>
                         </tr>
                       </thead>
@@ -71,6 +72,7 @@
 						  <td style="text-align: center; font-size:10px;"><?php echo $row->no_pemeliharaan; ?></td>
                           <td style="text-align: center; font-size:10px;"><?php echo $row->tanggal_pemeliharaan; ?></td>
                           <td style="text-align: center; font-size:10px;"><?php echo $row->hasil_pemeliharaan; ?></td>
+													<td style="text-align: center; font-size:10px;"><?php echo $row->harga_pemeliharaan; ?></td>
 						  <td style="text-align: center; font-size:10px;"><?php echo $row->nama_hari; ?></td>
 						  <td style="text-align: center; font-size:10px;"><?php echo $row->keterangan; ?></td>
                         </tr>

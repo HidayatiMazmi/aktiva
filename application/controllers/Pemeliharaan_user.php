@@ -71,18 +71,6 @@ class Pemeliharaan_user extends CI_Controller {
 			redirect('Pemeliharaan_user');
 		}
 	}
-	public function edit($id)
-	{
-		$this->load->library('form_validation');
-		$this->form_validation->set_rules('hasil_pemeliharaan','Nama',"required");
-		if ($this->form_validation->run() == false) {
-			$data['Pemeliharaan'] = $this->Pemeliharaan_model->select_id($id);
-			$this->load->view('user/pemeliharaan/edit_jadwal',$data);
-		}else{
-			$this->Pemeliharaan_model->update($id);
-			redirect('Pemeliharaan_user');
-		}
-	}
 
 	public function update($id)
 	{
@@ -188,8 +176,4 @@ class Pemeliharaan_user extends CI_Controller {
 		$this->pdf->setPaper('A4', 'landscape');
 		$this->pdf->load_view('user/pemeliharaan/cetak_laporan', $data,$title);
 	}
-
-	// public function cek() {
-		
-	// }
 }

@@ -38,25 +38,17 @@
                         <tr>
                           <th style="text-align: center; font-size:10px;">No</th>
                           <th style="text-align: center; font-size:10px;">Nama Aset</th>
-                          <th style="text-align: center; font-size:10px;">Kode Aset</th>
+                          <th style="text-align: center; font-size:10px;">Kode</th>
                           <th style="text-align: center; font-size:10px;">Jenis Aset</th>
                           <th style="text-align: center; font-size:10px;">Kategori Aset</th>
-                          <th style="text-align: center; font-size:10px;">Tanggal Terima</th>
-                          <th style="text-align: center; font-size:10px;">Masa Pemakaian</th>
-                          <th style="text-align: center; font-size:10px;">Kondisi Aset</th>
+                          <th style="text-align: center; font-size:10px;">Lokasi Aset</th>
+                          <th style="text-align: center; font-size:10px;">Tahun Perolehan</th>
+                          <th style="text-align: center; font-size:10px;">Masa Manfaat</th>
+                          <th style="text-align: center; font-size:10px;">Status</th>
                         </tr>
                       </thead>
                       <tbody>
                       <style>
-                        baik  {
-                          background-color: #80ced6;
-                        }
-                        rusak  {
-                          background-color: #f18973;
-                        }
-                        kosong  {
-                          background-color: #e8de81;
-                        }
 						td {       text-align: center;       padding: 5px;       } 
 					  </style>
 					  <?php if (isset($results)) { 
@@ -66,12 +58,13 @@
                         <tr>
                           <td style="text-align: center; font-size:10px;"><?php echo $i++; ?></td>
                           <td style="text-align: center; font-size:10px;"><?php echo $row->nama_aset; ?></td>
-                          <td style="text-align: center; font-size:10px;"><?php echo $row->kode_aset; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->kode; ?></td>
                           <td style="text-align: center; font-size:10px;"><?php echo $row->nama_jenis; ?></td>
                           <td style="text-align: center; font-size:10px;"><?php echo $row->nama_kategori; ?></td>
-                          <td style="text-align: center; font-size:10px;"><?php echo $row->tgl_terima; ?></td>
-                          <td style="text-align: center; font-size:10px;"><?php echo $row->masa_pemakaian; ?></td>
-                          <td style="text-align: center; font-size:10px;"><?php echo $row->kondisi_awal; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->nama_lokasi; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->tahun_perolehan; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->masa_manfaat; ?></td>
+                          <td style="text-align: center; font-size:10px;"><?php echo $row->status; ?></td>
                         </tr>
                         <?php } ?>
                         <?php } else { ?>

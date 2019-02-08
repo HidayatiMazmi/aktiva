@@ -30,12 +30,12 @@
                       </div>
                       <div class="col-md-5">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Kode Aset</label>
+                          <label class="col-sm-3 col-form-label">Kode</label>
                           <div class="col-sm-9">
                             <select name="id_aset" class="form-control" placeholder="Pilih Kategori">
-                              <option value="" selected="selected">Pilih Kode Aset</option>
+                              <option value="" selected="selected">Pilih Kode</option>
                               <?php foreach($aset as $a) { ?>
-                                <option value="<?php echo $a['id']; ?>" <?php echo ($a['id'] == $pemeliharaan[0]['id_aset'] ? 'selected="selected"' : ''); ?>><?php echo $a['kode_aset']; ?></option>
+                                <option value="<?php echo $a['id']; ?>" <?php echo ($a['id'] == $pemeliharaan[0]['id_aset'] ? 'selected="selected"' : ''); ?>><?php echo $a['kode']; ?></option>
                               <?php } ?>
                             </select>
                           </div>

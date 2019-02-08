@@ -29,43 +29,33 @@
                       </div>
                       <div class="col-md-5">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Kode Aset</label>
+                          <label class="col-sm-3 col-form-label">Kode</label>
                           <div class="col-sm-9">
-                            <input type="text" id="kode_aset" name="kode_aset" class="form-control" placeholder="kode Aset"/>
+                            <input type="text" id="kode" name="kode" class="form-control" placeholder="kode"/>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-5">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Nilai Aset</label>
+                          <label class="col-sm-3 col-form-label">Tahun Perolehan</label>
                           <div class="col-sm-9">
-                            <input type="text" id="nilai_aset" name="nilai_aset" class="form-control" placeholder="Nilai Aset"/>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div class="col-md-5">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Tanggal Terima</label>
-                          <div class="col-sm-9">
-                          <input type="date" class="form-control datepicker" format="dd-mm-yyyy" id="tgl_terima" name="tgl_terima" placeholder="Tanggal Terima">
-                            <!-- <input type="text" id="tgl_terima" name="tgl_terima" class="form-control" placeholder="Tanggal Terima"/> -->
+                          <input type="date" class="form-control datepicker" format="dd-mm-yyyy" id="tahun_perolehan" name="tahun_perolehan" placeholder="Tahun Perolehan">
                           </div>
                         </div>
                       </div>
                       <div class="col-md-5">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Masa Pemakaian</label>
+                          <label class="col-sm-3 col-form-label">Masa Manfaat</label>
                           <div class="col-sm-9">
-                            <input type="text" id="masa_pemakaian" name="masa_pemakaian" class="form-control" placeholder="Masa Pemakaian"/>
+                            <input type="text" id="masa_manfaat" name="masa_manfaat" class="form-control" placeholder="Masa Manfaat"/>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-5">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Kondisi Awal</label>
+                          <label class="col-sm-3 col-form-label">Status</label>
                           <div class="col-sm-9">
-                            <input type="text" id="kondisi_awal" name="kondisi_awal" class="form-control" placeholder="Kondisi Awal"/>
+                            <input type="text" id="status" name="status" class="form-control" placeholder="Ada/Tidak Ada"/>
                           </div>
                         </div>
                       </div>

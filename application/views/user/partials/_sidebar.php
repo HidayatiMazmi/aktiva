@@ -15,9 +15,7 @@
                   </div>
                 </div>
               </div>
-              <a class="btn btn-success btn-block" href="<?php echo base_url('aset/create/');?>">Tambah Aset
-                <i class="mdi mdi-plus"></i>
-              </a>
+              <button data-toggle="modal" data-target="#tambah-aset" class="btn btn-success btn-block"><i class="mdi mdi-plus"></i>Tambah Aset</button>
             </div>
           </li>
           <li class="nav-item">

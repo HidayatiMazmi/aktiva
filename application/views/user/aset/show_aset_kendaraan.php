@@ -14,7 +14,7 @@
                         <div class="form-group row">
                           <!-- <label class="col-sm-3 col-form-label">Foto Fisik Aset</label> -->
                           <div class="col-sm-9">
-                          <img height="100" width="100" src="<?php echo base_url();?>assets/img/aset/<?php echo $pemeliharaan->foto_fisik_aset;?>">
+                          <img height="100" width="100" src="<?php echo base_url();?>assets/img/aset/<?php echo $aset->foto_fisik_aset;?>">
                           </div>
                         </div>
                       </div>
@@ -22,7 +22,7 @@
                         <div class="form-group row">
                           <div class="col-sm-9">
                           <table class="table table-striped">
-                          <?php if (isset($pemeliharaan)) {  ?>
+                          <?php if (isset($aset)) {  ?>
                       <tbody>
                       <thead>
                         <tr>
@@ -30,7 +30,7 @@
                           </tr>
                       </thead>
                         <tr>
-                          <td><?php echo $pemeliharaan->nama_aset; ?></td>
+                          <td><?php echo $aset->nama_aset; ?></td>
                         </tr>
                       <thead>
                         <tr>
@@ -38,7 +38,7 @@
                         </tr>
                       </thead>
                         <tr>
-                        <td><?php echo $pemeliharaan->kode; ?></td>
+                        <td><?php echo $aset->kode; ?></td>
                         </tr>
                         <thead>
                         <tr>
@@ -46,7 +46,7 @@
                           </tr>
                       </thead>
                       <tr>
-                      <td><?php echo $pemeliharaan->nama_jenis; ?></td>
+                      <td><?php echo $aset->nama_jenis; ?></td>
                         </tr>
                       <thead>
                         <tr>
@@ -54,15 +54,23 @@
                           </tr>
                       </thead>
                       <tr>
-                      <td><?php echo $pemeliharaan->nama_kategori; ?></td>
+                      <td><?php echo $aset->nama_kategori; ?></td>
                         </tr>
                       <thead>
                         <tr>
-                        <th>Tanggal Terima</th>
+                        <th>Tahun Perolehan</th>
                           </tr>
                       </thead>
                       <tr>
-                      <td><?php echo $pemeliharaan->tahun_perolehan; ?></td>
+                      <td><?php echo $aset->tahun_perolehan; ?></td>
+                        </tr>
+                        <thead>
+                        <tr>
+                        <th>Status</th>
+                          </tr>
+                      </thead>
+                      <tr>
+                      <td><?php echo $aset->status; ?></td>
                         </tr>
                         <thead>
                         <tr>
@@ -70,7 +78,7 @@
                           </tr>
                       </thead>
                       <tr>
-                      <td><?php echo $pemeliharaan->nama_lokasi; ?></td>
+                      <td><?php echo $aset->nama_lokasi; ?></td>
                         </tr>
                       <thead>
                         <tr>
@@ -78,16 +86,61 @@
                           </tr>
                       </thead>
                       <tr>
-                      <td><?php echo $pemeliharaan->masa_manfaat; ?></td>
+                      <td><?php echo $aset->masa_manfaat; ?></td>
                         </tr>
-                      
+                        <?php } else { ?>
+                        <td colspan="12" type="center">Tidak ada data</td>
+                      <?php } ?>
+                      </tbody>                      
+                    </table>
+                    <br>
+                    <br>
+                          <label>Detail Kendaraan</label>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <div class="col-sm-9">
+                          <table class="table table-striped">
+                          <?php if (isset($kendaraan)) {  ?>
+                      <tbody>
+                      <thead>
+                        <tr>
+                          <th>Nomor Polisi</th>
+                        </tr>
+                      </thead>
+                        <tr>
+                        <td><?php echo $kendaraan->no_polisi; ?></td>
+                        </tr>
+                        <thead>
+                        <tr>
+                        <th>Nomor Rangka</th>
+                          </tr>
+                      </thead>
+                      <tr>
+                      <td><?php echo $kendaraan->no_rangka; ?></td>
+                        </tr>
+                      <thead>
+                        <tr>
+                        <th>Nomor Mesin</th>
+                          </tr>
+                      </thead>
+                      <tr>
+                      <td><?php echo $kendaraan->no_mesin; ?></td>
+                        </tr>
+                      <thead>
+                        <tr>
+                        <th>Tanggal Pembelian</th>
+                          </tr>
+                      </thead>
+                      <tr>
+                      <td><?php echo $kendaraan->tanggal_pembelian; ?></td>
+                        </tr>
                         <?php } else { ?>
                         <td colspan="12" type="center">Tidak ada data</td>
                       <?php } ?>
                       </tbody>                      
                     </table>
                       <div class="col-md-2">
-                      <button type="button" class="btn btn-primary btn-sm">Download</button>
+                      <a href="<?php echo base_url("aset/downloadLaporanPerAset/".$aset->id); ?>" class="btn btn-primary btn-sm">Download Laporan Aset<i class="mdi mdi-printer"></i></a>
                       </div>
                     </div>
                   </form>

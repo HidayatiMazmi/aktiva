@@ -60,7 +60,7 @@ class Pemeliharaan_model extends CI_Model {
     }
 
     function getAll($config){
-        $this->db->select("`a`.`id` AS `id_aset`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode_aset` AS `kode_aset`,`a`.`nilai_aset` AS `nilai_aset`,`a`.`tgl_terima` AS `tgl_terima`,`a`.`masa_pemakaian` AS `masa_pemakaian`,`a`.`kondisi_awal` AS `kondisi_awal`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`,`p`.`id` AS `id`,`p`.`hasil_pemeliharaan` AS `hasil_pemeliharaan`,`p`.`tanggal_pemeliharaan` AS `tanggal_pemeliharaan`,`h`.`nama_hari` AS `nama_hari`,`p`.`no_pemeliharaan` AS `no_pemeliharaan`,`p`.`keterangan` AS `keterangan`");
+        $this->db->select("`a`.`id` AS `id_aset`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode` AS `kode`,`a`.`tahun_perolehan` AS `tahun_perolehan`,`a`.`masa_manfaat` AS `masa_manfaat`,`a`.`status` AS `status`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`,`p`.`id` AS `id`,`p`.`hasil_pemeliharaan` AS `hasil_pemeliharaan`,`p`.`tanggal_pemeliharaan` AS `tanggal_pemeliharaan`,`h`.`nama_hari` AS `nama_hari`,`p`.`no_pemeliharaan` AS `no_pemeliharaan`,`p`.`keterangan` AS `keterangan`,`p`.`harga_pemeliharaan` AS `harga_pemeliharaan`");
         $this->db->where("((`p`.`id_aset` = `a`.`id`) and(`p`.`id_hari` = `h`.`id`) and(`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`))");
         $this->db->from("((`pemeliharaan` `p` join `hari` `h`)join((((`aset` `a` join `kategori` `k`) join `jenis_asset` `j`)join `lokasi` `l`)join `user` `u`))");
         $this->db->limit($config['per_page'], $this->uri->segment(3)); 
@@ -80,7 +80,7 @@ class Pemeliharaan_model extends CI_Model {
 		return $query->result_array();
 	}
     function getPemeliharaanAll(){
-        $this->db->select("`a`.`id` AS `id_aset`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode_aset` AS `kode_aset`,`a`.`nilai_aset` AS `nilai_aset`,`a`.`tgl_terima` AS `tgl_terima`,`a`.`masa_pemakaian` AS `masa_pemakaian`,`a`.`kondisi_awal` AS `kondisi_awal`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`,`p`.`id` AS `id`,`p`.`hasil_pemeliharaan` AS `hasil_pemeliharaan`,`p`.`tanggal_pemeliharaan` AS `tanggal_pemeliharaan`,`h`.`nama_hari` AS `nama_hari`,`p`.`no_pemeliharaan` AS `no_pemeliharaan`,`p`.`keterangan` AS `keterangan`");
+        $this->db->select("`a`.`id` AS `id_aset`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode` AS `kode`,`a`.`tahun_perolehan` AS `tahun_perolehan`,`a`.`masa_manfaat` AS `masa_manfaat`,`a`.`status` AS `status`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`,`p`.`id` AS `id`,`p`.`hasil_pemeliharaan` AS `hasil_pemeliharaan`,`p`.`tanggal_pemeliharaan` AS `tanggal_pemeliharaan`,`h`.`nama_hari` AS `nama_hari`,`p`.`no_pemeliharaan` AS `no_pemeliharaan`,`p`.`keterangan` AS `keterangan`");
         $this->db->where("((`p`.`id_aset` = `a`.`id`) and(`p`.`id_hari` = `h`.`id`) and(`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`))");
         $this->db->from("((`pemeliharaan` `p` join `hari` `h`)join((((`aset` `a` join `kategori` `k`) join `jenis_asset` `j`)join `lokasi` `l`)join `user` `u`))");
         $hasilquery = $this->db->get();
@@ -92,7 +92,7 @@ class Pemeliharaan_model extends CI_Model {
         }      
     }
     public function getPemeliharaanFilter(){
-		return $this->db->query('select `a`.`id` AS `id_aset`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode_aset` AS `kode_aset`,`a`.`nilai_aset` AS `nilai_aset`,`a`.`tgl_terima` AS `tgl_terima`,`a`.`masa_pemakaian` AS `masa_pemakaian`,`a`.`kondisi_awal` AS `kondisi_awal`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`p`.`id` AS `id`,`p`.`hasil_pemeliharaan` AS `hasil_pemeliharaan`,`p`.`tanggal_pemeliharaan` AS `tanggal_pemeliharaan` from (`pemeliharaan` `p` join((((`aset` `a` join `jenis_asset` `j`)join `lokasi` `l`)join `user` `u`) join `kategori` `k`)) where ((`p`.`id_aset` = `a`.`id`) and(`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`))')->num_rows();
+		return $this->db->query('select `a`.`id` AS `id_aset`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode` AS `kode`,`a`.`tahun_perolehan` AS `tahun_perolehan`,`a`.`masa_manfaat` AS `masa_manfaat`,`a`.`status` AS `status`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`p`.`id` AS `id`,`p`.`hasil_pemeliharaan` AS `hasil_pemeliharaan`,`p`.`tanggal_pemeliharaan` AS `tanggal_pemeliharaan` from (`pemeliharaan` `p` join((((`aset` `a` join `jenis_asset` `j`)join `lokasi` `l`)join `user` `u`) join `kategori` `k`)) where ((`p`.`id_aset` = `a`.`id`) and(`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`))')->num_rows();
     }
     public  function get_quick_list($s,$config)
 	{  
@@ -136,8 +136,8 @@ class Pemeliharaan_model extends CI_Model {
 		$hasilquery = $this->db->get();
 		return $hasilquery->num_rows();
 	}
-    public function getIdAset($kode_aset){
-        $this->db->where('kode_aset',$kode_aset);
+    public function getIdAset($kode){
+        $this->db->where('kode',$kode);
         $query = $this->db->get('aset');
         return $query->result_array();
     }
@@ -154,7 +154,7 @@ class Pemeliharaan_model extends CI_Model {
         }
     }
     public function show($id){
-		$this->db->select("`a`.`id` AS `id_aset`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode_aset` AS `kode_aset`,`a`.`nilai_aset` AS `nilai_aset`,`a`.`tgl_terima` AS `tgl_terima`,`a`.`masa_pemakaian` AS `masa_pemakaian`,`a`.`kondisi_awal` AS `kondisi_awal`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`a`.`foto_fisik_aset` AS `foto_fisik_aset`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`,`p`.`id` AS `id`,`p`.`hasil_pemeliharaan` AS `hasil_pemeliharaan`,`p`.`tanggal_pemeliharaan` AS `tanggal_pemeliharaan`,`h`.`nama_hari` AS `nama_hari`");
+		$this->db->select("`a`.`id` AS `id_aset`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode` AS `kode`,`a`.`tahun_perolehan` AS `tahun_perolehan`,`a`.`masa_manfaat` AS `masa_manfaat`,`a`.`status` AS `status`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`,`p`.`id` AS `id`,`p`.`hasil_pemeliharaan` AS `hasil_pemeliharaan`,`p`.`tanggal_pemeliharaan` AS `tanggal_pemeliharaan`,`h`.`nama_hari` AS `nama_hari`,`p`.`no_pemeliharaan` AS `no_pemeliharaan`,`p`.`keterangan` AS `keterangan`");
         $this->db->where("((`p`.`id_aset` = `a`.`id`) and(`p`.`id_hari` = `h`.`id`) and(`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`))");
         $this->db->from("((`pemeliharaan` `p` join `hari` `h`)join((((`aset` `a` join `kategori` `k`) join `jenis_asset` `j`)join `lokasi` `l`)join `user` `u`))");
         $query = $this->db->get();

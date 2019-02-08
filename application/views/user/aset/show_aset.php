@@ -34,11 +34,11 @@
                         </tr>
                       <thead>
                         <tr>
-                          <th>Kode Aset</th>
+                          <th>Kode</th>
                         </tr>
                       </thead>
                         <tr>
-                        <td><?php echo $aset->kode_aset; ?></td>
+                        <td><?php echo $aset->kode; ?></td>
                         </tr>
                         <thead>
                         <tr>
@@ -58,19 +58,19 @@
                         </tr>
                       <thead>
                         <tr>
-                        <th>Tanggal Terima</th>
+                        <th>Tahun Perolehan</th>
                           </tr>
                       </thead>
                       <tr>
-                      <td><?php echo $aset->tgl_terima; ?></td>
+                      <td><?php echo $aset->tahun_perolehan; ?></td>
                         </tr>
                         <thead>
                         <tr>
-                        <th>Kondisi Aset</th>
+                        <th>Status</th>
                           </tr>
                       </thead>
                       <tr>
-                      <td><?php echo $aset->kondisi_awal; ?></td>
+                      <td><?php echo $aset->status; ?></td>
                         </tr>
                         <thead>
                         <tr>
@@ -82,11 +82,11 @@
                         </tr>
                       <thead>
                         <tr>
-                        <th>Masa Pemakaian</th>
+                        <th>Masa Manfaat</th>
                           </tr>
                       </thead>
                       <tr>
-                      <td><?php echo $aset->masa_pemakaian; ?></td>
+                      <td><?php echo $aset->masa_manfaat; ?></td>
                         </tr>
                       
                         <?php } else { ?>

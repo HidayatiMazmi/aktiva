@@ -14,7 +14,7 @@
           <?php echo validation_errors(); ?>
         </div>
           <?php }?>
-
+          <label class="col-sm-3 col-form-label">Sekarang <?php echo date('d-m-Y') ?></label>
                   <h4 class="card-title">Pencarian Jadwal Pemeliharaan</h4>
                   <?php echo form_open('pemeliharaan_user/search'); ?>
                   <form class="form-sample">
@@ -67,9 +67,10 @@
                           <th>#</th>
                           <th>No Pemeliharaan</th>
                           <th>Nama Aset</th>
-                          <th>Kode Aset</th>
+                          <th>Kode</th>
                           <th>Tanggal Pemeliharaan</th>
                           <th>Hasil Pemeliharaan</th>
+                          <th>Harga Pemeliharaan</th>
                           <th>Hari Pemeliharaan</th>
                           <th>Act</th>
                         </tr>
@@ -82,9 +83,10 @@
                           <td><?php echo $i++; ?></td>
                           <td><?php echo $row->no_pemeliharaan; ?></td>
                           <td><?php echo $row->nama_aset; ?></td>
-                          <td><?php echo $row->kode_aset; ?></td>
+                          <td><?php echo $row->kode; ?></td>
                           <td><?php echo $row->tanggal_pemeliharaan; ?></td>
                           <td><?php echo $row->hasil_pemeliharaan; ?></td>
+                          <td><?php echo $row->harga_pemeliharaan; ?></td>
                           <td><?php echo $row->nama_hari; ?></td>
                           <td>
                             <ul class="navbar-nav navbar-nav-right">

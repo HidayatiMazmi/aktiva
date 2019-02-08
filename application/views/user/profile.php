@@ -70,12 +70,13 @@
                         <tr>
                           <th>#</th>
                           <th>Nama Aset</th>
-                          <th>Kode Aset</th>
+                          <th>Kode</th>
                           <th>Jenis Aset</th>
                           <th>Kategori Aset</th>
-                          <th>Tanggal Terima</th>
-                          <th>Masa Pemakaian</th>
-                          <th>Kondisi Aset</th>
+                          <th>Lokasi Aset</th>
+                          <th>Tahun Perolehan</th>
+                          <th>Masa Manfaat</th>
+                          <th>Status</th>
                           <th>Act</th>
                         </tr>
                       </thead>
@@ -94,26 +95,27 @@
                         }
                       </style>
                         <?php foreach($aset as $row) { 
-                          if($row->kondisi_awal=="Baik")
+                          if($row->status=="Ada")
                           {
-                            $status="<baik>&nbsp;Baik&nbsp;</baik>";
+                            $status="<baik>&nbsp;Ada&nbsp;</baik>";
                           }
-                          else if($row->kondisi_awal=="Rusak")
+                          else if($row->status=="Rusak")
                           {
                             $status="<rusak>&nbsp;Rusak&nbsp;</rusak>";
                           }
                           else
                           {
-                            $status="<kosong>&nbsp;Kosong&nbsp;</kosong>";
+                            $status="<kosong>&nbsp;Tidak Ada&nbsp;</kosong>";
                           }?>
                         <tr>
                           <td><?php echo $i++; ?></td>
                           <td><?php echo $row->nama_aset; ?></td>
-                          <td><?php echo $row->kode_aset; ?></td>
+                          <td><?php echo $row->kode; ?></td>
                           <td><?php echo $row->nama_jenis; ?></td>
                           <td><?php echo $row->nama_kategori; ?></td>
-                          <td><?php echo $row->tgl_terima; ?></td>
-                          <td><?php echo $row->masa_pemakaian; ?></td>
+                          <td><?php echo $row->nama_lokasi; ?></td>
+                          <td><?php echo $row->tahun_perolehan; ?></td>
+                          <td><?php echo $row->masa_manfaat; ?></td>
                           <td><?php echo $status; ?></td>
                           <td>
                             <ul class="navbar-nav navbar-nav-right">
@@ -122,6 +124,7 @@
                                   <i class="mdi mdi-settings"></i>Action
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                                <?php if($row->id_kategori!=3){?>
                                   <a class="dropdown-item mt-2" href="<?php echo site_url("aset/show/".$row->id); ?>">
                                   <i class="mdi mdi-monitor"></i>
                                   </a>
@@ -131,6 +134,17 @@
                                   <a class="dropdown-item" href="<?php echo site_url("aset/delete/".$row->id); ?>">
                                   <i class="mdi mdi-delete"></i>
                                   </a>
+                                <?php }else{ ?>
+                                  <a class="dropdown-item mt-2" href="<?php echo site_url("aset/showAsetKendaraan/".$row->id); ?>">
+                                  <i class="mdi mdi-monitor"></i>
+                                  </a>
+                                  <a class="dropdown-item mt-2" href="<?php echo site_url("aset/updateAset/".$row->id); ?>">
+                                  <i class="mdi mdi-pencil-box-outline"></i>
+                                  </a>
+                                  <a class="dropdown-item" href="<?php echo site_url("aset/deleteAsetKendaraan/".$row->id); ?>">
+                                  <i class="mdi mdi-delete"></i>
+                                  </a>
+                                <?php } ?>
                                 </div>
                               </li>
                             </ul>

@@ -50,29 +50,27 @@
                           <table border="1"  style="width:100%">
                       <thead>
                         <tr>
-						  <th style="text-align: center;">Nama Aset</th>
-						  <th style="text-align: center;">Kode Aset</th>
+                          <th style="text-align: center;">Nama Aset</th>
+                          <th style="text-align: center;">Kode</th>
                           <th style="text-align: center;">Jenis Aset</th>
                           <th style="text-align: center;">Kategori Aset</th>
-						  <th style="text-align: center;">Lokasi Aset</th>
-                          <th style="text-align: center;">Kondisi Aset</th>
-                          <th style="text-align: center;">Masa Pemakaian</th>
-                          <th style="text-align: center;">Nilai Aset</th>
-						  <th style="text-align: center;">Tanggal Terima</th>
+						              <th style="text-align: center;">Lokasi Aset</th>
+                          <th style="text-align: center;">Status</th>
+                          <th style="text-align: center;">Masa Manfaat</th>
+						              <th style="text-align: center;">Tahun Perolehan</th>
                         </tr>
                       </thead>
                       
                       <tbody>
                         <tr>
 						  <td style="text-align: center;"><?php echo $aset->nama_aset; ?></td>
-						  <td style="text-align: center;"><?php echo $aset->kode_aset; ?></td>
+						  <td style="text-align: center;"><?php echo $aset->kode; ?></td>
                           <td style="text-align: center;"><?php echo $aset->nama_jenis; ?></td>
                           <td style="text-align: center;"><?php echo $aset->nama_kategori; ?></td>
 						  <td style="text-align: center;"><?php echo $aset->nama_lokasi; ?></td>
-						  <td style="text-align: center;"><?php echo $aset->kondisi_awal; ?></td>
-                          <td style="text-align: center;"><?php echo $aset->masa_pemakaian; ?></td>
-                          <td style="text-align: center;"><?php echo $aset->nilai_aset; ?></td>
-                          <td style="text-align: center;"><?php echo $aset->tgl_terima; ?></td>
+						  <td style="text-align: center;"><?php echo $aset->status; ?></td>
+                          <td style="text-align: center;"><?php echo $aset->masa_manfaat; ?></td>
+                          <td style="text-align: center;"><?php echo $aset->tahun_perolehan; ?></td>
                         </tr>
                       </tbody>
 					</table>
