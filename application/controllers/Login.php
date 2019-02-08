@@ -25,7 +25,7 @@
                     $cek_notifikasi = $this->db->get_where('daftar_notifikasi', array('tanggal_notifikasi' => $now, 'id_pemeliharaan' => $pemeliharaan['id']))->result_array();
 
                     if(count($cek_notifikasi) == 0) {
-                        send_email('PG. Kebon Agung Malang', 'forselemel4@gmail.com', 'fumukaba@gmail.com', $pemeliharaan['keterangan'], 'Jadwal pemeliharaan dalam ' . $pemeliharaan['keterangan'] . ' sisa ' . $numberDays . ' hari lagi.');
+                        send_email('PG. Kebon Agung Malang', 'forselemel4@gmail.com', 'hidayatimazmi@gmail.com', $pemeliharaan['keterangan'], 'Jadwal pemeliharaan dalam ' . $pemeliharaan['keterangan'] . ' sisa ' . $numberDays . ' hari lagi.');
 
                         $this->db->insert('daftar_notifikasi', array('tanggal_notifikasi' => $now, 'id_pemeliharaan' => $pemeliharaan['id']));
                     }

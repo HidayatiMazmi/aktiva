@@ -38,6 +38,7 @@ class Master extends CI_Controller {
             $session_data=$this->session->userdata('logged_in');
             $data = [
                 'results' => $this->Aset_model->getAll($config),
+                'resultsKend' => $this->Aset_model->getAllKendaraanAset(),
                 'title' => 'Master',
                 'username' => $session_data['username'],
                 'role' => $session_data['role'],

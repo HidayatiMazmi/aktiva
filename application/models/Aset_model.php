@@ -22,6 +22,13 @@ class Aset_model extends CI_Model {
             return $data;
         }      
 	}
+	function getAllKendaraanAset(){
+        $this->db->select("`a`.`id` AS `id`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode` AS `kode`,`a`.`tahun_perolehan` AS `tahun_perolehan`,`a`.`masa_manfaat` AS `masa_manfaat`,`a`.`status` AS `status`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`,`kend`.`id` AS `id_kendaraan`");
+        $this->db->where("((`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`)and (`kend`.`id_aset` = `a`.`id`))");
+        $this->db->from("(`kendaraan` `kend` join((((`aset` `a` join `kategori` `k`) join `jenis_asset` `j`)join `lokasi` `l`)join `user` `u`))");
+		$hasilquery = $this->db->get();
+		return $hasilquery->result();
+	}
 	function getAsetAll(){
         $this->db->select("`a`.`id` AS `id`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode` AS `kode`,`a`.`tahun_perolehan` AS `tahun_perolehan`,`a`.`masa_manfaat` AS `masa_manfaat`,`a`.`status` AS `status`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`");
         $this->db->where("((`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`))");
@@ -35,7 +42,7 @@ class Aset_model extends CI_Model {
         }      
 	}
 	public function show($id){
-		$this->db->select("`a`.`id` AS `id`,`a`.`foto_fisik_aset` AS `foto_fisik_aset`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode` AS `kode`,`a`.`tahun_perolehan` AS `tahun_perolehan`,`a`.`masa_manfaat` AS `masa_manfaat`,`a`.`status` AS `status`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`");
+		$this->db->select("`a`.`id` AS `id`,`a`.`foto_fisik_aset` AS `foto_fisik_aset`,`a`.`nama_aset` AS `nama_aset`,`a`.`kode` AS `kode`,`a`.`tahun_perolehan` AS `tahun_perolehan`,`a`.`masa_manfaat` AS `masa_manfaat`,`a`.`status` AS `status`,`a`.`keterangan` AS `keterangan`,`a`.`id_kategori` AS `id_kategori`,`a`.`id_jenis` AS `id_jenis`,`a`.`id_lokasi` AS `id_lokasi`,`a`.`id_user` AS `id_user`,`u`.`username` AS `username`,`l`.`nama_lokasi` AS `nama_lokasi`,`k`.`nama_kategori` AS `nama_kategori`,`j`.`nama_jenis` AS `nama_jenis`,`kend`.*");
         $this->db->where("((`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`)and (`a`.`id` = $id))");
         $this->db->from("((((`aset` `a` join `kategori` `k`) join `jenis_asset` `j`)join `lokasi` `l`)join `user` `u`)");
                 $query = $this->db->get();
@@ -43,17 +50,16 @@ class Aset_model extends CI_Model {
 		return $query->row();
 	}
 	public function showAset($id){
-		$this->db->select("`a`.*,`u`.*,`l`.*,`k`.*,`j`.*,`kend`.*");
-        $this->db->where("((`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`)and (`a`.`id` = `kend`.`id_aset`)and (`kend`.`id` = $id))");
-        $this->db->from("(`kendaraan` `kend` join((((`aset` `a` join `kategori` `k`) join `jenis_asset` `j`)join `lokasi` `l`)join `user` `u`))");
+		$this->db->select("`a`.*,`u`.*,`l`.*,`k`.*,`j`.*");
+        $this->db->where("((`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`)and (`a`.`id` = $id))");
+        $this->db->from("((((`aset` `a` join `kategori` `k`) join `jenis_asset` `j`)join `lokasi` `l`)join `user` `u`)");
                 $query = $this->db->get();
-
 		return $query->row();
 	}
 	public function showKendaraan($id){
-		$this->db->select("`a`.*,`k`.*,`kend`.*,`l`.*,`j`.*");
-        $this->db->where("((`a`.`id_kategori` = `k`.`id`) and (`a`.`id_user` = `u`.`id`) and (`a`.`id_jenis` = `j`.`id`)and (`a`.`id_lokasi` = `l`.`id`)and (`a`.`id` = `kend`.`id_aset`)and (`kend`.`id` = $id))");
-        $this->db->from("(`kendaraan` `kend` join((((`aset` `a` join `kategori` `k`) join `jenis_asset` `j`)join `lokasi` `l`)join `user` `u`))");
+		$this->db->select("`a`.*,`kend`.*");
+        $this->db->where("((`a`.`id` = `kend`.`id_aset`)and (`kend`.`id_aset` = $id))");
+        $this->db->from("(`kendaraan` `kend` join `aset` `a`)");
                 $query = $this->db->get();
 
 		return $query->row();

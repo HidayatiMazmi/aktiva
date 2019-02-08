@@ -38,7 +38,7 @@
 	<?php if (isset($results)) { 
 		$y=1;?>
 	<?php foreach($results as $row) { ?>
-<table border="0" class="TableFormulir" style="width:30%">
+<table border="0" class="TableFormulir" style="width:40%">
     <tr>
 		<td style="font-size:12px;"><?php echo $y++; ?>.</td>
     	<td style="font-size:12px;">Kode</td>
@@ -60,8 +60,8 @@
 						  <th style="text-align: center; font-size:10px;">No Pemeliharaan</th>
                           <th style="text-align: center; font-size:10px;">Tanggal Pemeliharaan</th>
                           <th style="text-align: center; font-size:10px;">Hasil Pemeliharaan</th>
-						  <th style="text-align: center; font-size:10px;">Hari Pemeliharaan</th>
 							<th style="text-align: center; font-size:10px;">Harga Pemeliharaan</th>
+							<th style="text-align: center; font-size:10px;">Hari Pemeliharaan</th>
 						  <th style="text-align: center; font-size:10px;">Keterangan</th>
                         </tr>
                       </thead>
